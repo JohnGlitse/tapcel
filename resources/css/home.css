@@ -1,0 +1,334 @@
+
+
+section{
+    padding: 40px 80px;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+}
+
+section h1{
+    font-size: 40px;
+    font-weight: bold;
+}
+section span{
+    color: var(--accent-color);
+}
+
+hr{
+    color: var(--accent-color);
+}
+
+
+.fa-star{
+    color: #fefae0;
+}
+
+.checked{
+    color: orange;
+}
+
+/* HOMEPAGE BANNER STYLES */
+.brands{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+     background-color: var(--color-1);
+}
+
+.brands ul{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 12px;
+    background-color: var(--accent-color); 
+    border-radius: 0 0 100% 100%;
+}
+ 
+.brands ul li a{
+    color: #fff;
+}
+
+.banner-container{
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.banner .slide{
+    width: 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 0;
+    background-color: var(--accent-color);
+}
+.banner .slide:nth-child(1){
+    background-color: var(--secondary-color);
+}
+.banner .slide:nth-child(2) {
+      background: linear-gradient(-55deg,  var(--secondary-color) 45%, var(--accent-color) 45%);
+}
+.banner .slide:nth-child(3) {
+      background: linear-gradient(-55deg, var(--color-1) 55%, var(--color-3) 45%);
+}
+
+.banner-text{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+    color: #fff;
+}
+.banner-text p{
+    font-size: 20px;
+    font-style: italic;
+}
+.banner-text button{
+    background-color: #fff;
+    padding: 6px 25px;
+    outline:  none;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+}
+.slide .banner-text h1{
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 60px;
+}
+
+.slide .banner-img{
+    width: 300px;
+    height: 250px;
+    transform: rotate(25deg);
+}
+.banner-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.arrows{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.arrows .fa-arrow-right, .fa-arrow-left{
+    background-color: skyblue;
+    color: #fff;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 26px;
+}
+
+.arrows .fa-arrow-left{
+    margin-left: 20px;
+}
+.arrows .fa-arrow-right{
+    margin-right: 20px;
+}
+
+/* STYLING THE SYSTEMS SECTION */
+       .systems{
+            width: 100%;
+            height: 100%;
+            padding: 0 80px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .system{
+            width: 100%;
+            height: 100px;
+            background: var(--color-2);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 4px 0;
+            padding: 10px;
+        }
+        .system:nth-child(2){
+            background-color: var(--color-1);
+        }
+        .system:last-child{
+            background-color: var(--color-3);
+        }
+        .system > div{
+            height: 100%;
+        }
+        .system > .img{
+            height: 100%;
+            background-color: var(--color-1);
+            opacity: 0.6;
+            padding: 8px;
+            border-radius: 50px;
+        }
+        .system > div img{
+            width: 100%;
+            height: 100%;
+            transform: rotate(25deg);
+        }
+        .system-text{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+        }
+        .system-text button{
+            background-color: #fff;
+            padding: 4px;
+            outline:  none;
+            cursor: pointer;
+            color: #000;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .system  h4{
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .system p{
+            
+        }
+
+
+/* BEST ANDROID DEALS STYLES */
+
+#deals{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+ 
+.products{
+    width: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+.product{
+    padding: 15px;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.08);
+}
+
+.rating-commission{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.commission{
+    padding: 3px;
+    color: #fff;
+    background-color: var(--accent-color);
+}
+
+.fa-star {
+    color: #ccc;  
+}
+
+.fa-star.checked {
+    color: gold; /* filled star */
+}
+/* PRODUCT CATEGORIES STYLES */
+
+#categories{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.categories{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.category{
+    border-radius: 50%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.08);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category img{
+    width: 120px;
+
+}
+#huawei{
+    width: 80px;
+}
+
+/* PRODUCTS TOP BRANDS STYLES */
+.top-brands{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+}
+.brand{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(10, 99, 169, 0.2);
+}
+
+.brand:nth-child(1){
+    background-color: var(--color-2);
+}
+.brand:nth-child(2){
+    background: var(--secondary-color);
+}
+
+
+.top-brands .logo-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.logo-text .img{
+    width: 130px;
+    overflow: hidden;
+}
+.logo-text img{
+    background-color: #fff;
+    width: 100%;
+    border-radius: 30px;
+    object-fit: cover;
+}
+.logo-text .text{
+    padding: 6px;
+    background-color: #fff3b0;
+    border-radius: 20px;
+    text-align: center;
+}
+.top-brands  .brand-img{
+    width: 150px;
+}
+.top-brands > .brand-img img{
+    width: 100%;
+}

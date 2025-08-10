@@ -1,0 +1,129 @@
+.navbar{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 80px;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+nav{
+    display: flex;
+    gap: 12px;
+}
+nav ul{
+    display: flex;
+    gap: 12px;
+}
+
+.search{
+    display: flex;
+    gap: 4px;
+}
+.search input{
+    padding: 3px 12px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid black;
+    width: 170px;
+    height: 35px;
+}
+.search button{
+    outline: none;
+    border: none;
+    background-color: var(--accent-color);
+    color: white;
+    width: 60px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.cart-login{
+    display: flex;
+    gap: 16px;
+}
+
+.cart i{
+    font-size: 22px;
+}
+.login-register{
+    display: flex;
+    gap: 4px;
+}
+
+
+#services{
+    width: 100%;
+    min-height: 100%;
+    padding-bottom: 60px;
+}
+
+.services{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.service{
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+footer{
+    width: 100%;
+    min-height: 100%;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+    gap: 40px;
+}
+.footer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.footer-col{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.col-items{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-col h3{
+    font-weight: bold;
+}
+
+.footer-col h4{
+    font-weight: bold;
+}
+.footer-col span{
+    display: flex;
+    gap: 10px;
+}
+.playstore, .appstore{
+    width: 100px;
+}
+.playstore img{
+    width: 100%;
+    cursor: pointer;
+}
+.appstore img{
+    width: 100%;
+    cursor: pointer;
+}
+
+.footer-col span{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
