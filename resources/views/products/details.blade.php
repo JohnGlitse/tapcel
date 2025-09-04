@@ -3,7 +3,7 @@
       @if (@session('success')
         
         )
-           <p id="added" style="color: white; background:#1b4965; padding: 6px;">{{session('success')}}</p>
+           <p class="added" style="">{{session('success')}}</p>
        @endif
      
         <div id="product-details">
@@ -13,6 +13,7 @@
                     <p><a href="{{route('product.index')}}"><i class="fa-regular fa-house"></i></a>/Bestseller</p>
                 </span>
             </div>
+
             <div class="details">
             <div class="detail-img"> <img src="{{asset('storage/' . $product->file)}}"></div>
              <div class="detail-text">
@@ -60,12 +61,12 @@
     <hr>          
             <div class="products" id="products">
                 @foreach ($products as $product)
-                <a href="">
+                 <a href="{{route('product.show', $product)}}">
                  <div id="product">
                     <div>
                         <img src="{{ asset('storage/' . $product->file) }}" alt="">
                     </div>
-                    <p class="title">{{ $product->title}}</p>
+                    <p class="title">{{Str::words( $product->title, 2)}}</p>
                     <h3 class="price">GHS{{$product->price}}</h3>
                     <div class="rating-commission">
                         <p class="rating">
@@ -103,10 +104,19 @@
             #product{
                 width: 170px;
             }
+            .added{
+                color: white; background:#3587a4; padding: 12px;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                z-index: 6;
+                width: 100%;
+                font-weight: bold;
+            }
         </style>
 
         <script>
-            const added = document.getElementById('added');
+            const added = document.getElementsByClassName('added')[0];
  
             setTimeout(() => {
                added.style.display = 'none';

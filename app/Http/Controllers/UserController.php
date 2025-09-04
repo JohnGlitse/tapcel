@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -91,21 +92,44 @@ class UserController extends Controller
 //     ],
 // ]);
 
- $users = $request->validate([
-            'firstname' => ['required', 'min:2', 'max:30'],
-            'lastname' => ['required', 'min:2', 'max:30'],
-            'email' => ['required', 'min:2', 'max:30', 'unique:users,email'],
-            'telephone' => ['required','integer'],
-            'gender' => ['required'],
-            'region' => ['required'],
-            'address' => ['required', 'min:2', 'max:100'],
-            'password' => ['required', 'min:4', 'max:16'],
-        ]);
+//  $users = $request->validate([
+//             'firstname' => ['required', 'min:2', 'max:30'],
+//             'lastname' => ['required', 'min:2', 'max:30'],
+//             'email' => ['required', 'min:2', 'max:30'],
+//             'telephone' => ['required','integer'],
+//             'gender' => [],
+//             'region' => ['required', 'nullable'],
+//             'address' => ['required', 'min:2', 'max:100'],
+//             'password' => ['required', 'min:4', 'max:16'],
+//         ]);
 
-/// UPDATE USER DETAILS IF VALIDATED
-    User::update($users);
-    dd('Updated');
+// /// UPDATE USER DETAILS IF VALIDATED
+//     User::update($users);
+//     return redirect('/');
+//     }
+
+ $validated = $request->validate([
+        'firstname' => ['required', 'string', 'min:2', 'max:30'],
+        'lastname'  => ['required', 'string', 'min:2', 'max:30'],
+        'email'     => ['required', 'email', Rule::unique('users')->ignore($user->id)],
+        'telephone' => ['required','string'],
+        'gender'    => ['required'],
+        'region'    => ['required'],
+        'address'   => ['required', 'string', 'min:2', 'max:100'],
+        'password'  => ['nullable', 'string', 'min:4', 'max:16'],  
+    ]);
+
+    // Hash password if user updated it
+    if (!empty($validated['password'])) {
+        $validated['password'] = bcrypt($validated['password']);
+    } else {
+        unset($validated['password']); // don’t overwrite with null
     }
+
+    $user->update($validated);
+
+    return redirect('/')->with('success', 'Profile updated successfully!');
+}
 
 
     /// DELETES A SINGLE USER RECORD
@@ -136,14 +160,18 @@ class UserController extends Controller
 
     if (Auth::attempt($validated)) {
         $request->session()->regenerate();
-
-        return redirect()->intended('/');
+        
+        return redirect()->intended();
+        
     }
-
-    return back()->withErrors([
-        'email' => 'The provided credentials do not match our records.',
-    ])->onlyInput('email');
+    $user = Auth::user();
+    return view('users.profile', compact('user'));
+    // return back()->withErrors([
+    //     'email' => 'The provided credentials do not match our records.',
+    // ])->onlyInput('email');
 }
+
+ 
 
 public function logout(){
     Auth::logout();
@@ -151,3 +179,5 @@ public function logout(){
 }
 
 }
+
+

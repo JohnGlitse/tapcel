@@ -19,9 +19,9 @@
 
 :root{
     --primary-color: #fff;
-    --secondary-color: #619b8a;
+    --secondary-color: #f8f9fa;
     --accent-color: #233d4d;
-    --color-1: #a1c181;
+    --color-1: #3587a4;
     --color-2: #fcca46;
     --color-3: #fe7f2d;
 
@@ -33,8 +33,15 @@
     --color-2: #5fa8d3;
     --color-3: #fb8500; */
 
-    --page-padding: 80px;
+    --page-padding: 80px 80px 80px 80px;
 }
+
+@media screen and (max-width: 767px) {
+    :root{
+        --page-padding: 50px 15px 50px 15px;
+    }
+}
+ 
 
 body{
     width: 100%;
@@ -52,4 +59,12 @@ html, body{
     color: darkred;
 }
 
- 
+.added{
+    color: white; background:#3587a4; padding: 12px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    z-index: 6;
+    width: 100%;
+    font-weight: bold;
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Tapcel</title>
     @vite(['resources/css/layout.css'])
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @vite(['resources/css/home.css', 'resources/js/app.js'])
@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="navbar">
-        <div>Logo</div>
+        <a href="{{route('product.index')}}">LOGO</a>
         <nav>
             <ul>
                 <li><a href="{{route('product.index')}}">Home</a></li>
@@ -26,17 +26,66 @@
                 <li><a href="">Ratings</a></li>
                 <li><a href="pages/contact">Contact</a></li>
             </ul>
-            <form action="{{route('product.index')}}" class="search">
+            
+        </nav>
+
+        <form action="{{route('product.index')}}" class="search">
               <input type="text" name="search" placeholder="Search...">
               <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
-            {{-- <form action="{{route('product.index')}}" class="search">
+            <!-- {{-- <form action="{{route('product.index')}}" class="search">
                 <input type="text" name="search" placeholder="Search for a product ...">
                 <button type="submit">Search</button>
-            </form> --}}
-        </nav>
+            </form> --}} -->
         <div class="cart-login">
-            <div class="cart"><a href="{{route('cart')}}"><i class="fa-regular fa-cart-shopping">{{count(session('cart', []))}}</i></a></div>
+            <div class="cart">
+                <a href="{{route('cart')}}" style="">
+                    <i class="fa-regular fa-cart-shopping"></i>
+                   
+                    @if (empty(session('cart')))
+                        <p></p>
+                    @else
+                     <p class="cart-count"> {{count(session('cart', []))}}</p>
+                    @endif
+                       
+                </a>
+           </div>
+                <a href="{{route('login')}}" style="">
+                    <i class="fa fa-user"></i>
+                </a>
+                <i class="fa fa-bars"></i>
+        </div>
+        <style>
+            .cart > a{
+                display: flex; position: relative;
+            }
+            .cart-count{
+                position: absolute; top: -8px; background: var(--color-1);
+                right: -4px; color: #fff; 
+                font-weight: bold; z-index: 2; 
+                border-radius: 50%; text-align: center;
+                width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+                 font-size: 12px; padding: 2px; 
+            }
+
+            #user-circle{
+                font-size: 20px;
+            }
+            .logout{
+                background: var(--accent-color);
+                color: #fff;
+                padding: 3px 12px;
+                cursor: pointer;
+                margin-left: 6px;
+            }
+
+            @media(max-width: 767px) {
+                .login-register{
+                    display: none;
+                }
+            }
+
+        </style>
             <div class="login-register">
                 @guest
                     <a href="{{route('login')}}">Login</a>
@@ -44,11 +93,12 @@
                 <a href="{{route('users.create')}}">Register</a>
                 @endguest
                 @auth
-                 <div>{{auth()->user()->firstname}}</div>
+                <a href="{{route('userprofile')}}"><i class="fa fa-user-circle" id="user-circle"></i></a>
+                 <!-- <div>{{auth()->user()->firstname}}</div> -->
                  <form action="{{route('logout')}}" method="POST">
 
                     @csrf
-                    <button>Logout</button>
+                    <button class="logout">Logout</button>
                  </form>
                 @endauth
             </div>

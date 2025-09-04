@@ -21,10 +21,18 @@ class ProductController extends Controller
         }else{
             $products = Product::all();
         }
+
+
+        /// SELECTING BASED ON BRAND
+       
         
-        return view('products.index', ['products' => $products]);
+        return view('products.index', [
+            'products' => $products,
+        ]);
+        
 
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -62,7 +70,7 @@ class ProductController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect('products.index');
+        return redirect('/products/dashboard');
 
         }
 
@@ -120,7 +128,7 @@ class ProductController extends Controller
                 'file' => $path
             ]);
 
-            dd('Product Updated');
+            return redirect('/products/dashboard');
         }
     /**
      * Remove the specified resource from storage.

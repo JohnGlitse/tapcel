@@ -42,6 +42,7 @@ nav ul{
 .cart-login{
     display: flex;
     gap: 16px;
+    align-items: center;
 }
 
 .cart i{
@@ -50,6 +51,7 @@ nav ul{
 .login-register{
     display: flex;
     gap: 4px;
+    align-items: center;
 }
 
 
@@ -75,7 +77,7 @@ nav ul{
 footer{
     width: 100%;
     min-height: 100%;
-    padding: 80px;
+    padding: var(--page-padding);
     display: flex;
     flex-direction: column;
     background-color: #eee;
@@ -126,4 +128,96 @@ footer{
     display: flex;
     align-items: center;
     gap: 20px;
+
 }
+
+.footer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+
+/* Mobile (max-width: 767px) */
+@media screen and (max-width: 767px) {
+  .navbar {
+    /* height: auto;
+    padding: 0 0; */
+    gap: 10px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .search {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .search input {
+    width: 100%;
+    max-width: 200px;
+    font-size: 16px;
+    height: 30px;
+  }
+
+  .search button {
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .cart-login {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* .services {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .service {
+    padding: 10px;
+  } */
+}
+
+
+
+
+
+
+/* Tablet (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+  .navbar {
+    padding: 0 40px;
+    height: 70px;
+  }
+
+  .services {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .search input {
+    width: 130px;
+    font-size: 16px;
+    height: 30px;
+  }
+
+  .search button {
+    width: 50px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  
+}
+

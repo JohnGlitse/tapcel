@@ -1,22 +1,4 @@
- {{-- @props(['product']) --}}
-      
-        {{-- <div class="product">
-                    <div><img src="{{asset('storage/' . $product->file)}}" alt=""></div>
-                    <p class="title">{{$product->description}}</p>
-                    <h3 class="prcie">GHS{{$product->price}}</h3>
-                    <div class="rating-commission">
-                        <p class="rating">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </p>
-                        <div class="commission">
-                            -8%
-                        </div>
-                    </div>
-                </div> --}}
+  
 
                 @props(['product', 'style' => ''])
         <a href="{{route('product.show', $product)}}">
@@ -24,7 +6,7 @@
                 <div>
                     <img src="{{ asset('storage/' . $product->file) }}" alt="">
                 </div>
-                <p class="title">{{ $product->title}}</p>
+                <p class="title">{{Str::words($product->title, 2)}}</p>
                 <h3 class="price">GHS{{$product->price}}</h3>
                 <div class="rating-commission">
                     <p class="rating">

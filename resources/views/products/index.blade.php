@@ -1,13 +1,13 @@
 <x-layout>
 
-      
+
     <section style="padding-top: 0; padding-bottom: 6px;">
      <div class="brands">
         <ul>
             
-            <li><a href="">Apple</a></li>
-            <li><a href="">Samsung</a></li>
-            <li><a href="">Tecno</a></li>
+            <li><a href="{{route('samsung')}}">Samsung</a></li>
+            <li><a href="{{route('apple')}}">Apple</a></li>
+            <li><a href="{{route('tecno')}}">Tecno</a></li>
             <li><a href="">Infinix</a></li>
             <li><a href="">Huawei</a></li>
             <li><a href="">Itel</a></li>
@@ -134,7 +134,7 @@
         
         @empty
             <div>
-                No results found for: <strong>{{request()->search}}</strong>
+                No Product found: <strong>{{request()->search}}</strong>
             </div>
         @endforelse
          
@@ -207,14 +207,14 @@
         
         @empty
             <div>
-                No results found for: <strong>{{request()->search}}</strong>
+                No Product found: <strong>{{request()->search}}</strong>
             </div>
         @endforelse
 
               
 
              {{-- <div class="products">
-                @php $count = 0; @endphp
+                <!-- @php $count = 0; @endphp
                 @foreach ($products as $value)
                     @php $count++; @endphp
 
@@ -230,7 +230,7 @@
 
         <p>{{ $value->description }}</p>
     @endforeach
-</div> --}}
+</div> --}} -->
 
         </div>
     </section>
@@ -273,5 +273,5 @@
         </div>
     </section>
 
- 
+
 </x-layout>

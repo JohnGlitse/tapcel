@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PaystackController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\BrandController;
 
 //// ALL PRODUCTS CONTROLLER ROUTES
 
@@ -29,7 +30,13 @@ Route::get('products/dashboard', function(){
 
 Route::get('products/dashboard', [ProductController::class, 'admin']);
 
+Route::get('checkout', function(){
+    return view('products.checkout');
+})->name('checkout');
 
+Route::get('confirmpayment', function(){
+    return view('products.confirmpayment');
+})->name('confirmpayment');
 
 // These routes only return views to the various pages
 Route::get('pages/contact', function(){
@@ -43,7 +50,6 @@ Route::post('/add-To-Cart/{id}', [CartController::class, 'addToCart'])->name('ad
 Route::get('cart', function(){
     return view('products.cart');
 })->name('cart');
-
  
 Route::get('/removeItem/{id}', [CartController::class, 'removed'])->name('removeItem');
 
@@ -57,10 +63,17 @@ Route::get('login', function(){
 
 Route::post('login', [UserController::class, 'login']);
 Route::post('logout', [UserController::class, 'logout'])->name('logout');
- 
-// Route::get('products/dashboard', [ProductController::class, 'admin']);
 
- //Route::get('products/dashboard', [DashboardController::class, 'admin']);
+ 
+Route::get('profile', function(){
+    return view('users.profile');
+})->name('profile');
+ 
+Route::get('userprofile', function(){
+    return view('users.userprofile');
+})->name('userprofile');
+
+ 
 
  
 
@@ -83,9 +96,7 @@ Route::post('/pay', [PaystackController::class, 'redirectToGateway'])->name('pay
 Route::get('/payment/callback', [PaystackController::class, 'handleGatewayCallback'])->name('payment.callback');
 
 
-Route::get('auth/google/{id}', [GoogleController::class, 'edit']);
-Route::get('auth/google', [GoogleController::class, 'update']);
-
+ 
 /// GOOGLE SIGN UP AND LOGIN ROUTES
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('redirect.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
@@ -93,8 +104,25 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 
 
 
-// Route::get('users/updateGoogle', function(){
-//     return view('users/updateGoogle');
-// });
+///// ROUTES FOR ALL BRANDS PAGES
 
+Route::get('pages/samsung', function(){
+    return view('pages/samsung');
+})->name('samsung');
 
+//  Route::get('pages.samsung', [BrandController::class, 'sam']);
+Route::get('/samsung', [BrandController::class, 'samsung'])->name('samsung');
+
+ 
+
+Route::get('pages/apple', function(){
+    return view('pages/apple');
+})->name('apple');
+ 
+Route::get('/apple', [BrandController::class, 'apple'])->name('apple');
+
+Route::get('pages/tecno', function(){
+    return view('pages/tecno');
+})->name('tecno');
+ 
+Route::get('/tecno', [BrandController::class, 'tecno'])->name('tecno');

@@ -1,4 +1,4 @@
-{{-- <x-layout>
+<!-- {{-- <x-layout>
     @php
         $total = 0
     @endphp
@@ -22,11 +22,15 @@
         <strong>Total:: {{$total}}</strong>
     </div>
     @endif
-</x-layout> --}}
+</x-layout> --}} -->
 
 
 
-
+      @if (@session('completed')
+        
+        )
+           <p class="added" style="">{{session('completed')}}</p>
+       @endif
 
 <x-layout>
     <div id="cart">
@@ -42,7 +46,7 @@
                 <div class="cart-item">
                     <div class="cart-img"><img src="{{asset('storage/' . $item['file'])}}" width="80px"></div>
                     <div class="cart-text">
-                        <p>{{$item['title']}}</p>
+                        <p>{{Str::words($item['title'], 6)}}</p>
                          <h3>GHS{{$item['price']}}</h3>
                     </div>
                     <div class="cart-buttons">
@@ -57,7 +61,7 @@
             </div>
          
                
-           @endif
+          
             <div class="summary">
                 <div class="summary-text">
                     <h3>Cart Summary</h3>
@@ -70,10 +74,18 @@
                         <h3>GHS{{$total}}</h3>
                     </div>
                 </div>
-                <button class="checkout">Checkout</button>
+                <a href="{{route('checkout')}}"><button class="checkout">Checkout</button></a>
             </div>
+             @else 
+            <h3 style="font-size: 22px; font-weight: bold">Your cart is empty. Add a product.</h3>
+            @endif
+           
+            
         </div>
+         
     </div>
+
+
 
     <style>
         #cart{
@@ -99,10 +111,12 @@
         .cart-item{
             width: 100%;
             height: 100%;
-            background: #CAF0F8;
+            background: var(--secondary-color);
             display: flex;
             padding: 20px;
             justify-content: space-between;
+            gap: 40px;
+            border-radius: 10px;
         }
         .cart-text{}
         .cart-buttons{
@@ -111,8 +125,30 @@
             justify-content: space-between;
             align-items: flex-end;
         }
+        .cart-buttons > span{
+            display: flex;
+            gap: 4px;
+        }
         .cart-buttons input{
             border: 1px solid var(--accent-color);
+        }
+        input[type="number"]{
+            width: 70px;
+        }
+        input[type="submit"]{
+            width: 70px;
+            background: var(--accent-color);
+            color: #fff;
+            padding: auto;
+            cursor: pointer;
+            border: none;
+        }
+        input[name="remove"]{
+            background: transparent;
+            color: #ff0000;
+            padding: auto;
+            cursor: pointer;
+            border: none;
         }
 
         .summary{
@@ -125,7 +161,7 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            background: #CAF0F8;
+            background: var(--secondary-color);
             padding: 12px;
         }
         .subtotal, .total{
@@ -146,4 +182,13 @@
             font-size: 18px;
         }
     </style>
+
+           <script>
+            const added = document.getElementsByClassName('added')[0];
+ 
+            setTimeout(() => {
+               added.style.display = 'none';
+            }, 5000);
+         
+        </script>
 </x-layout>

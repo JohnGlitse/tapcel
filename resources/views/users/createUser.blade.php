@@ -57,14 +57,14 @@
                </select>
                </div>
 
-              {{-- <select name="region" class="region">
+              <!-- {{-- <select name="region" class="region">
                 <option value="">--- Select a region ---</option>
                 <option value="Greater Accra" {{ old('region') == 'Greater Accra' ? 'selected' : '' }}>Greater Accra</option>
                 <option value="Volta" {{ old('region') == 'Volta' ? 'selected' : '' }}>Volta</option>
                 <option value="Northern" {{ old('region') == 'Northern' ? 'selected' : '' }}>Northern</option>
                 <option value="Ashante" {{ old('region') == 'Ashante' ? 'selected' : '' }}>Ashante</option>
                 <option value="Central" {{ old('region') == 'Central' ? 'selected' : '' }}>Central</option>
-            </select> --}}
+            </select> --}} -->
 
                 @error('region')
                     <p class="error-message">{{$message}}</p>
@@ -84,14 +84,14 @@
             </div>
         </form>
     
+        <div style="display: flex; gap: 10px; align-items: center">
+            <a href="{{route('redirect.google')}}"> <img src="{{asset('images/googlesignin.png')}}" width="200px"> </a>
+            <a href="{{route('redirect.google')}}"> <img src="{{asset('images/facebooksignin.png')}}" width="250px"> </a>
         <div>
-            <a href="{{route('redirect.google')}}"> <button>Google</button></a>
-            <button>Google</button>
-            <button>Facebook</button>
+           
         </div>
-        <div>
-            Already have and account? Sign In
-        </div>
+        
+        
         </div>
     </div>
 </x-layout>

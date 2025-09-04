@@ -66,7 +66,8 @@ class PaystackController extends Controller
         if ($body['status'] && $body['data']['status'] === 'success') {
             // Store the transaction or mark order as paid
             // Example: Transaction::create([...])
-            return view('products.index', ['data' => $body['data']]);
+            // return view('products.index', ['data' => $body['data']]);
+            return redirect('cart')->with('completed', 'Your order has beend placed successully!');
         }
 
         return view('payment-failed')->with('error', 'Payment failed or could not be verified.');
