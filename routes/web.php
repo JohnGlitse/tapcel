@@ -32,7 +32,7 @@ Route::get('products/dashboard', [ProductController::class, 'admin']);
 
 Route::get('checkout', function(){
     return view('products.checkout');
-})->name('checkout');
+})->middleware('auth')->name('checkout');
 
 Route::get('confirmpayment', function(){
     return view('products.confirmpayment');
@@ -41,7 +41,7 @@ Route::get('confirmpayment', function(){
 // These routes only return views to the various pages
 Route::get('pages/contact', function(){
     return view('pages.contact');
-});
+})->name('contact');
 
 
 ///// PRODUCT CART MANIPULATIONS CONTROLERS

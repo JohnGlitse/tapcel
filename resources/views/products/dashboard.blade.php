@@ -7,6 +7,7 @@
     @vite(['resources/css/layout.css'])
     @vite(['resources/css/dashboard.css'])
     @vite(['resources/css/app.css'])
+    @vite('resources/js/app.js')
     <link rel="stylesheet" href="{{asset('fontawesome-free-6.7.2-web/css/all.min.css')}}">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -20,6 +21,7 @@
             <div class="logo">Logo</div>
             <div class="side-bar-items">
                 <div class="items">
+                <li><a href="{{route('product.index')}}">Home</a></li>    
                 <li>Dashboard</li>
                 <li>Users</li>
                 <li><a href="{{route('product.create')}}">Add Product</a></li>
@@ -31,12 +33,13 @@
         </div>
         <div class="container">
             <div class="header">
-                <li><a href="{{route('product.index')}}">Home</a></li>
+                
                 <form action="" method="post" class="search">
                     @csrf
                     <input type="text" name="search" placeholder="Search...">
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
+                <i class="fa fa-th-large"></i>
             </div>
             <div class="content">
                 <div class="boxes">
@@ -48,9 +51,18 @@
                         <h2>Total Users</h2>
                          <p>{{$users->total()}}</p>
                     </div>
-                    <div class="box">Total Orders</div>
-                    <div class="box">Total Sales</div>
-                    <div class="box">Monthly Visitors</div>
+                    <div class="box">
+                        <h2>Total Orders</h2>
+                         <p>{{$users->total()}}</p>
+                    </div>
+                    <div class="box">
+                        <h2>Total Sales</h2>
+                         <p>{{$users->total()}}</p>
+                    </div>
+                    <div class="box">
+                        <h2>Monthly Visits</h2>
+                         <p>{{$users->total()}}</p>
+                    </div>
                 </div>
                 <div class="charts">
                     <div class="pie">
@@ -66,7 +78,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Title</th>
-                            <th>Brand</th>
+                            <!-- <th>Brand</th> -->
                             <th>Price</th>
                             <th>Image</th>
                             <th>Update</th>
@@ -77,7 +89,7 @@
                             <tr>
                                 <td>{{$product->id}}</td>
                                 <td>{{Str::words($product->title, 1)}}</td>
-                                <td>{{$product->brand}}</td>
+                                <!-- <td>{{$product->brand}}</td> -->
                                 <td>{{$product->price}}</td>
                                 <td><img src="{{asset('storage/' . $product->file)}}" width="50px"></td>
                                 <td>
@@ -103,7 +115,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Gender</th>
+                            <!-- <th>Gender</th> -->
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
@@ -112,7 +124,7 @@
                             <td>{{$user->id}}</td>
                             <td>{{$user->firstname . ' '. $user->lastname}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{$user->gender}}</td>
+                            <!-- <td>{{$user->gender}}</td> -->
                             <td>
                                 <a href="{{route('users.edit', $user)}}">
                                    <button>Update</button>
@@ -305,12 +317,12 @@ Highcharts.chart('funnelChart', {
     series: [{
         name: 'Unique users',
         data: [
-//[datakeys, datavalues],
-            // ['Downloads', 4064],
-            // ['Requested price list', 1987],
-            // ['Invoice sent', 976],
-            // ['Finalized', 846]
-          //  datavalues, datakeys
+// [datakeys, datavalues],
+//             ['Downloads', 4064],
+//             ['Requested price list', 1987],
+//             ['Invoice sent', 976],
+//             ['Finalized', 846]
+//            datavalues, datakeys
         ]
     }],
 
@@ -334,6 +346,22 @@ Highcharts.chart('funnelChart', {
     }
 });
 
+
+
+
+
+</script>
+
+<script>
+    /// THIS CODE SHOW THE SIZE BAR ON THE DASHBOARD
+
+const sideBar = document.querySelector('.side-bar');
+const faTh = document.querySelector('.fa-th-large');
+
+ 
+    faTh.addEventListener('click', ()=>{
+    sideBar.classList.toggle('active');
+});
 </script>
 </body>
 </html>

@@ -73,16 +73,28 @@
 }
 
 
+@media(max-width: 767px){
+    .form-row{
+    flex-direction: column;
+    gap: 10px;
+}
+    .signup form input[type="submit"]{
+        width: 50%;
+    }
+}
+
+
 
 #login{
-        width: 100%;
+    display: flex;
+    width: 100%;
     padding: var(--page-padding);
     flex-direction: column;
     gap: 30px;
 }
 
 .login{
-        display: flex;
+    display: flex;
     flex-direction: column;
     gap: 40px;
     width: 100%;
@@ -115,5 +127,15 @@
     font-size: 20px;
     cursor: pointer;
     width: 20%;
+}
+
+
+@media(max-width: 767px){
+    .login form input{
+        width: 100%;
+    }
+    .login form input[type="submit"]{
+        width: 50%;
+    }
 }
 

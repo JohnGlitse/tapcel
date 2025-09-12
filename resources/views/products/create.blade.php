@@ -19,6 +19,13 @@
                         <p class="error-message">{{$message}}</p>
                     @enderror
                 </div>
+                <div>
+                    <label for="current_price">Current Price</label>
+                    <input type="number" name="current_price" value="{{old('current_price')}}">
+                    @error('current_price')
+                        <p class="error-message">{{$message}}</p>
+                    @enderror
+                </div>
             </div>
             <div class="product-row">
                 <div>
@@ -46,10 +53,45 @@
                         <p class="error-message">{{$message}}</p>
                     @enderror
                 </div>
+                <!-- <div>
+                   <div class="button"> <button>Create</button></div>
+                </div> -->
+            </div>
+            <div class="product-row">
+                 <div>
+                     <label for="quantity">Product Quantity</label>
+                    <input type="number" name="quantity" value="{{old('quantity')}}">
+                    @error('quantity')
+                        <p class="error-message">{{$message}}</p>
+                    @enderror
+                </div>
+                <div>
+                    <label for="status">Product status</label>
+                  <input type="checkbox" name="status" value="{{'status'}}">
+                  @error('status')
+                        <p class="error-message">{{$message}}</p>
+                    @enderror
+                    <label for="trending">Trending Product</label>
+                  <input type="checkbox" name="trending" value="{{'trending'}}">
+                  @error('trending')
+                        <p class="error-message">{{$message}}</p>
+                    @enderror
+                </div>
+            </div>
+           
+            <div class="product-row">
+                  <div>
+                    <label for="tax">Product Tax</label>
+                    <input type="number" name="tax" value="{{old('tax')}}">
+                    @error('tax')
+                        <p class="error-message">{{$message}}</p>
+                    @enderror
+                </div>
                 <div>
                    <div class="button"> <button>Create</button></div>
                 </div>
             </div>
+           
         </form>
 
     </div>

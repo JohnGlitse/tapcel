@@ -20,10 +20,25 @@
 :root{
     --primary-color: #fff;
     --secondary-color: #f8f9fa;
-    --accent-color: #233d4d;
+    --accent-color: #033f63;
     --color-1: #3587a4;
-    --color-2: #fcca46;
-    --color-3: #fe7f2d;
+    --color-2: #343a40;
+    --color-3: #005f73;
+
+    --primary-color: #fff;
+    --secondary-color: #f8f9fa;
+    --accent-color: #03071e;
+    --color-1: #023047;
+    --color-2: #415a77;
+    --color-3: #0d1b2a;
+
+    /* --primary-color: #fff;
+    --secondary-color: #ebf2fa;
+    --accent-color: #2ec4b6;
+     --accent-color: #3587a4;
+    --color-1: #9bf6ff;
+    --color-2: #ffbf69;
+    --color-3: #ff9f1c; */
 
 
     /* --primary-color: #cae9ff;
@@ -49,6 +64,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-self: center;
+    font-family: "Bricolage Grotesque";
 }
 
 html, body{

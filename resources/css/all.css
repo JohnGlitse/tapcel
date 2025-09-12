@@ -52,3 +52,10 @@
     cursor: pointer;
     width: 30%;
 }
+
+@media(max-width: 767px){
+    .contact{
+        flex-direction: column;
+        gap: 20px;
+}
+}

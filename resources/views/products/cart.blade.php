@@ -46,7 +46,7 @@
                 <div class="cart-item">
                     <div class="cart-img"><img src="{{asset('storage/' . $item['file'])}}" width="80px"></div>
                     <div class="cart-text">
-                        <p>{{Str::words($item['title'], 6)}}</p>
+                        <p>{{Str::words($item['title'], 3)}}</p>
                          <h3>GHS{{$item['price']}}</h3>
                     </div>
                     <div class="cart-buttons">
@@ -117,6 +117,8 @@
             justify-content: space-between;
             gap: 40px;
             border-radius: 10px;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
         }
         .cart-text{}
         .cart-buttons{
@@ -155,7 +157,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-             flex: 1;
+            flex: 1;
         }
         .summary-text{
             display: flex;
@@ -180,6 +182,18 @@
         input{
             color: black;
             font-size: 18px;
+        }
+
+        @media(max-width: 767px){
+            #cart{
+                padding: 40px 15px;
+            }
+            .cart{
+                flex-direction: column;
+            }
+            .cart-buttons > span{
+                flex-direction: column;
+            }
         }
     </style>
 

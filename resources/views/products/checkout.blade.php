@@ -25,9 +25,9 @@
                         $total = $total + ($item['quantity'] * $item['price']);
                     @endphp
                 <div class="cart-item">
-                    <div class="cart-img"><img src="{{asset('storage/' . $item['file'])}}" width="40px"></div>
+                    <div class="cart-img"><img src="{{asset('storage/' . $item['file'])}}" ></div>
                     <div class="cart-text">
-                        <p>{{Str::words($item['title'], 6)}}</p>
+                        <p>{{Str::words($item['title'], 3)}}</p>
                         
                     </div>
                     <div class="cart-buttons">
@@ -136,6 +136,12 @@
             border-radius: 10px;
             /* box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.05); */
         }
+        .cart-img{
+            width: 40px;
+        }
+        .cart-img img{
+            width: 100%;
+        }
         .cart-text{}
         .cart-buttons{
             display: flex;
@@ -150,25 +156,7 @@
         .cart-buttons input{
             border: 1px solid var(--accent-color);
         }
-        /* input[type="number"]{
-            width: 70px;
-        }
-        input[type="submit"]{
-            width: 70px;
-            background: var(--accent-color);
-            color: #fff;
-            padding: auto;
-            cursor: pointer;
-            border: none;
-        }
-        input[name="remove"]{
-            background: transparent;
-            color: #ff0000;
-            padding: auto;
-            cursor: pointer;
-            border: none;
-        } */
-
+        
 
         .summary{
             display: flex;
@@ -196,6 +184,20 @@
             color: var(--color-1);
             font-size: 20px;
             font-weight: bold;
+        }
+        @media(max-width: 767px){
+            .checkout{
+                flex-direction: column;
+            }
+            .container{
+                padding: 20px;
+            }
+            .container:first-child{
+            width: 100%;
+        }
+        .cart-img{
+            width: 40px;
+        }
         }
     </style>
 </x-layout>

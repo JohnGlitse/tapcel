@@ -15,16 +15,24 @@
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
 
  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+   
 </head>
 <body>
     <div class="navbar">
-        <a href="{{route('product.index')}}">LOGO</a>
+        <!-- <a href="{{route('product.index')}}" class="logo" > -->
+            <img src="{{asset('images/samplelogo.png')}}" width="40px">
+        <!-- </a> -->
         <nav>
             <ul>
                 <li><a href="{{route('product.index')}}">Home</a></li>
                 <li><a href="">About</a></li>
                 <li><a href="">Ratings</a></li>
-                <li><a href="pages/contact">Contact</a></li>
+                <li><a href="{{route('contact')}}">Contact</a></li>
             </ul>
             
         </nav>
@@ -78,12 +86,26 @@
                 cursor: pointer;
                 margin-left: 6px;
             }
-
+             
+           
+            .logo{
+                font-size: 60px;
+            }
+            .logo img{
+                width: 60px;
+            }
             @media(max-width: 767px) {
                 .login-register{
                     display: none;
                 }
+                
+                .logo img{
+                width: 60px;
+                object-fit: cover;
+                }
             }
+
+            
 
         </style>
             <div class="login-register">
@@ -148,11 +170,11 @@
             <h3>Contact</h3>
              <div class="col-items">
                 <span>
-                <i class="fa-brands fa-instagram"></i>
+                <i class="fa fa-envelope"></i>
                 <p>+233 278 0483</p>
              </span>
              <span>
-                <i class="fa-brands fa-facebook"></i>
+                <i class="fa fa-phone"></i>
                 <p>example@gmail.com</p>
              </span>
              <span>
@@ -197,5 +219,8 @@
             </div>
         </div>
     </footer>
+    
+    <!-- <script src="{{ asset('resources/js/app.js') }}" defer></script> -->
+
 </body>
 </html>

@@ -7,8 +7,8 @@
                 
                 <p>Feel Free to use the form or drop an email. Old fashioned phone calls work too.</p>
                 <span><i class="fa-regular fa-cart-shopping"></i>  +233 23 804 2483</span>
-                <span><i class="fa-regular fa-cart-shopping"></i>  jray@gmail.com</span>
-                <span><i class="fa-regular fa-cart-shopping"></i>  Accra, Ghana</span> 
+                <span><i class="fa fa-envelope"></i>  jray@gmail.com</span>
+                <span><i class="fa fa-map-marker"></i>  Accra, Ghana</span> 
             </div>
             <form action="">
                 {{-- <label for="name">Name</label> --}}

@@ -8,46 +8,35 @@
      
         <div id="product-details">
             <div class="detail-hero">
-                 <h3>Limited stock/Grab yours before it's gone</h3>
+                 <h3><a href="{{route('product.index')}}"><i class="fa-regular fa-house"></i></a>/{{Str::words($product->title, 3)}}</h3>
                  <span>
-                    <p><a href="{{route('product.index')}}"><i class="fa-regular fa-house"></i></a>/Bestseller</p>
+                    
                 </span>
             </div>
 
             <div class="details">
             <div class="detail-img"> <img src="{{asset('storage/' . $product->file)}}"></div>
              <div class="detail-text">
-                 <p class="title">{{$product->title}}</p>
+                 <p class="title">{{Str::words($product->title, 8)}}</p>
+                 <hr>
                 <h3 class="price">GHS{{$product->price}}</h3>
                <div class="availability"> <input type="checkbox" name="checkbox" checked> Availability: <span>In Stock</span></div>
                  
                <form action="{{ route('add-To-Cart', $product->id) }}" method="POST">
                     @csrf
                     <input type="number" name="quantity" value="1" min="1" />
-                    {{-- <button type="submit">Add to Cart</button> --}}
                     <a href="{{route('add-To-Cart', $product->id)}}"><button>Add To Cart</button></a>
                </form>
                 {{-- <input type="number" name="quantity" min="1" id="" value="1"> --}}
                 {{-- <a href="{{route('add-To-Cart', $product->id)}}"><button>Add To Cart</button></a> --}}
                 <h4>Free shipping on orders above GHS2000 - Ends Today!</h4>
-               
+                  <hr>
                  <div class="description" >
                 <h2>Product Description</h2>
                 {{-- <p class="title">{{$brand->title}}</p> --}}
                 <p>
                     {{$product->description}}
-                    Abide with me fast falls the evening tides, the darkness deepen Lord with me abide.
-                    And when other helps fail and comfort flee, help of the helpless Lord abide with me.
-                    And I need thy presence every passing hour, shing through the gloom and point me to the skies.
-                    Who like thyself, my guide and stay can be. Through clouds and sunshine Lord abide with me. And 
-                    hold thou thy cross before my closing eyes. What but thy grace can foil the temper's power. 
-                    Heaven morning breaks and earth's vein shadows flee. In life, in death o Lord abide with me.
-                    Abide with me fast falls the evening tides, the darkness deepen Lord with me abide.
-                    And when other helps fail and comfort flee, help of the helpless Lord abide with me.
-                    And I need thy presence every passing hour, shing through the gloom and point me to the skies.
-                    Who like thyself, my guide and stay can be. Through clouds and sunshine Lord abide with me. And 
-                    hold thou thy cross before my closing eyes. What but thy grace can foil the temper's power. 
-                    Heaven morning breaks and earth's vein shadows flee. In life, in death o Lord abide with me.
+                     
                 </p>
             </div>
                
@@ -113,14 +102,19 @@
                 width: 100%;
                 font-weight: bold;
             }
+            @media(max-width: 767px){
+            #relatedProducts{
+                padding: 40px 15px;
+            }
+            }
         </style>
 
         <script>
-            const added = document.getElementsByClassName('added')[0];
+            // const added = document.getElementsByClassName('added')[0];
  
-            setTimeout(() => {
-               added.style.display = 'none';
-            }, 2000);
+            // setTimeout(() => {
+            //    added.style.display = 'none';
+            // }, 2000);
          
         </script>
     

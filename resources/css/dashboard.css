@@ -1,8 +1,8 @@
- /* *{
+ *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        } */
+        }
 #dashboard{
     width: 100%;
     display: flex;
@@ -75,7 +75,7 @@
 }
 .box{
     background: #edede9;
-    height: 100px;
+    height: fit-content;
 }
 .charts{
     display: flex;
@@ -117,3 +117,39 @@ table button[class="delete"]{
 }
 
 tr:nth-child(even){background-color: #f2f2f2;}
+
+
+.fa-th-large{
+    display: none;
+}
+
+@media(max-width: 767px){
+    .fa-th-large{
+        display: block;
+        color: var(--primary-color);
+        font-size: 25px;
+    }
+    .side-bar{
+        width: 50%;
+        z-index: 2;
+        display: none;
+    }
+    .side-bar.active{
+        display: initial;
+    }
+    .container{
+    width: 100%;
+    margin-left: 0; 
+    padding-bottom: 100px;
+}
+    .boxes{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .box{
+        height: fit-content;
+        padding: 12px;
+    }
+    .tables{
+        flex-direction: column;
+    }
+}

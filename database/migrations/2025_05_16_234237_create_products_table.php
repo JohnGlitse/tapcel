@@ -15,9 +15,14 @@ return new class extends Migration
             $table->id();
             $table->String('title');
             $table->float('price');
+            $table->float('current_price');
             $table->String('brand');
             $table->String('file');
             $table->text('description');
+            $table->String('quantity');
+            $table->tinyInteger('status');
+            $table->tinyInteger('trending');
+            $table->String('tax');
             $table->timestamps();
         });
     }

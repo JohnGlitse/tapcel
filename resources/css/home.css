@@ -7,6 +7,15 @@ section{
     position: relative;
 }
 
+body > section{
+    padding-top: 0; padding-bottom: 6px;
+
+}
+/* section:first-child{
+    padding-top: 0; padding-bottom: 6px;
+} */
+
+
 section h1{
     font-size: 40px;
     font-weight: bold;
@@ -49,7 +58,7 @@ hr{
 }
  
 .brands ul li a{
-    color: #fff;
+    color: var(--primary-color);
 }
 
 .banner-container{
@@ -63,35 +72,47 @@ hr{
     position: relative;
     display: flex;
     flex-wrap: nowrap;
+    height: 350px;
 }
 .banner .slide{
     width: 100%;
     min-width: 100%;
     display: flex;
     justify-content: space-around;
-    padding: 30px 0;
-    background-color: var(--accent-color);
+    padding: 0 40px;
+    /* background-color: var(--color-1); */
+    background: linear-gradient(-55deg, var(--color-2) 55%, var(--color-3) 45%);
+ 
 }
 .banner .slide:nth-child(1){
-    background-color: var(--secondary-color);
+    background: linear-gradient(-55deg, var(--accent-color) 55%, var(--color-3) 45%);
 }
 .banner .slide:nth-child(2) {
-      background: linear-gradient(-55deg,  var(--secondary-color) 45%, var(--accent-color) 45%);
+      background: var(--accent-color);
 }
+ 
+
+
 .banner .slide:nth-child(3) {
-      background: linear-gradient(-55deg, var(--color-1) 55%, var(--color-3) 45%);
+      background: linear-gradient(-55deg, var(--color-1) 55%, var(--color-2) 45%);
 }
+
+
 
 .banner-text{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
     align-items: flex-start;
-    color: #fff;
+    justify-content: center;
+    color: var(--primary-color);
 }
 .banner-text p{
     font-size: 20px;
-    font-style: italic;
+    opacity: 0.8;
+}
+.banner-text p ~ p{
+    font-style: normal;
 }
 .banner-text button{
     background-color: #fff;
@@ -100,6 +121,7 @@ hr{
     cursor: pointer;
     color: #000;
     font-weight: bold;
+    border-radius: 6px;
 }
 .slide .banner-text h1{
     font-size: 60px;
@@ -108,15 +130,20 @@ hr{
 }
 
 .slide .banner-img{
-    width: 300px;
-    height: 250px;
-    transform: rotate(25deg);
+    width: 400px;
+    transform: translateY(20%);
+    overflow: visible;
+    height: 400px;
 }
 .banner-img img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    transform: rotate(-15deg);
 }
+
+
+
+
 .arrows{
     width: 100%;
     display: flex;
@@ -127,11 +154,11 @@ hr{
 }
 
 .arrows .fa-arrow-right, .fa-arrow-left{
-    background-color: skyblue;
+    background-color: var(--secondary-color);
     color: #fff;
-    padding: 12px;
+    padding: 8px;
     cursor: pointer;
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .arrows .fa-arrow-left{
@@ -140,6 +167,62 @@ hr{
 .arrows .fa-arrow-right{
     margin-right: 20px;
 }
+
+
+@media(max-width: 767px){
+ 
+body > section:nth-child(2){
+    padding-top: 0; 
+    padding-bottom: 6px;
+    padding-right: 0;
+    padding-left: 0;
+    
+}
+    .brands{
+        display: none;    
+    }
+.banner{
+    height: 100%;
+}
+    .banner .slide:nth-child(3) {
+    background: var(--color-1);
+    /* background: linear-gradient(-55deg, var(--color-1) 35%, var(--color-2) 65%); */
+}
+
+ 
+.banner .slide{
+     /* flex-direction: column; */
+     background: var(--color-3);
+     padding: 40px 15px;
+}
+
+.banner-text{
+ gap: 10px;
+}
+
+.slide .banner-text h1{
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 50px;
+}
+
+
+.slide .banner-img{
+    width: 300px;
+    transform: translateY(50%);
+    height: auto;
+}
+.banner-img img{
+    transform: rotate(0deg);
+}
+.arrows{
+    display: none;
+}
+}
+
+
+
+
 
 /* STYLING THE SYSTEMS SECTION */
        .systems{
@@ -150,12 +233,7 @@ hr{
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
         }
-        @media(max-width: 767px){
-            .systems{
-                padding: 0 15px;
-                grid-template-columns: repeat(1, 1fr);
-            }
-        }
+
         .system{
             width: 100%;
             height: 100px;
@@ -170,7 +248,7 @@ hr{
             background-color: var(--color-1);
         }
         .system:last-child{
-            background-color: var(--color-3);
+            background-color: var(--accent-color);
         }
         .system > div{
             height: 100%;
@@ -214,6 +292,27 @@ hr{
         }
 
 
+        @media(max-width: 767px){
+         
+        .systems {
+            padding: 0 15px;
+            display: flex;  
+            flex-wrap: nowrap;
+            overflow-x: scroll;  
+            gap: 10px;  
+            height: 100%;
+    }
+    
+    .system {
+        min-width: 300px;  
+        width: 300px;  
+        flex-shrink: 0; 
+        height: 100px;  
+    }
+}
+        
+
+
 /* BEST ANDROID DEALS STYLES */
 
 #deals{
@@ -236,9 +335,7 @@ hr{
 .product{
     padding: 15px;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.08);
-    /* aspect-ratio: 1; 
-     max-width: 170px;
-    width: 100%; */
+    border-radius: 12px;
 }
 
 .product div{
@@ -260,7 +357,9 @@ hr{
 .commission{
     padding: 3px;
     color: #fff;
-    background-color: var(--accent-color);
+    background-color: var(--color-1);
+    border-radius: 6px;
+    font-size: 12px;
 }
 
 .fa-star {
@@ -298,7 +397,6 @@ hr{
 
 .category img{
     width: 120px;
-
 }
 #huawei{
     width: 80px;
@@ -314,17 +412,17 @@ hr{
 .brand{
     display: flex;
     justify-content: space-between;
-    background-color: var(--secondary-color);
-    padding: 12px;
+    background-color: var(--color-2);
+    padding: 20px 20px 0 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(10, 99, 169, 0.2);
 }
 
 .brand:nth-child(1){
-    background-color: var(--color-2);
+    background-color: var(--color-3);
 }
 .brand:nth-child(2){
-    background: var(--secondary-color);
+    background: var(--color-1);
 }
 
 
@@ -332,9 +430,10 @@ hr{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
 }
 .logo-text .img{
-    width: 130px;
+    width: 100px;
     overflow: hidden;
 }
 .logo-text img{
@@ -346,36 +445,68 @@ hr{
 .logo-text .text{
     padding: 6px;
     background-color: #fff3b0;
-    border-radius: 20px;
+    border-radius: 15px;
     text-align: center;
+    margin-bottom: 20px;
 }
 .top-brands  .brand-img{
-    width: 150px;
+    width: 80px;
 }
 .top-brands > .brand-img img{
     width: 100%;
+    object-fit: cover;
 }
 
 @media(max-width: 767px){
-    .products{
+.products{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-
-    
- 
 }
 
 .product{
     padding: 15px;
-     
-    /* aspect-ratio: 1; 
-     max-width: 170px;
-    width: 100%; */
 }
 
 .categories{
-   
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
     gap: 8px;
 }
+
+.category{
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category img{
+    min-width: 80px;
+    width: 80px;
+}
+#huawei{
+    width: 80px;
+}
+
+.top-brands{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scrollbar-color: var(--accent-color);
+}
+.brand{
+    width: 80%;
+    min-width: 80%;
+}
+.logo-text .img{
+    width: 100px;
+    overflow: hidden;
+}
+.top-brands  .brand-img{
+    width: 80px;
+}
+
 }

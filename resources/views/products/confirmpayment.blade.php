@@ -1,10 +1,11 @@
-<div id="confirmpayment">
+<x-layout>
+    <div id="confirmpayment">
     <h1>Select Payment Method</h1>
     <div class="container">
             <a href="{{route('payment.form')}}"><button>Mobile Money</button></a>
             <a href="{{route('payment.form')}}"><button>Bank Payment</button></a>
             <a href=""><button>Pay Cash on Delivery</button></a>
-            <a href="{{route('product.index')}}"><button style="background-color: #3587a4; color: #fff">Cancel Payment</button></a>
+            <a href="{{route('product.index')}}"><button style="background-color: var(--accent-color); color: #fff">Cancel Payment</button></a>
     </div>
 
     <style>
@@ -42,9 +43,21 @@
         }
         
         #confirmpayment button:hover {
-            background-color: #3587a4;
+            background-color: var(--accent-color);
             color: white;
+        }
+
+       
+        @media(max-width: 767px){
+            #confirmpayment{
+            padding: 40px 15px;
+            gap: 30px;
+        }
+        .container{
+            width: 100%;
+        }
         }
         
     </style>
 </div>
+</x-layout>

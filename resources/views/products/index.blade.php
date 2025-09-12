@@ -1,7 +1,7 @@
 <x-layout>
 
 
-    <section style="padding-top: 0; padding-bottom: 6px;">
+    <section>
      <div class="brands">
         <ul>
             
@@ -22,12 +22,13 @@
         <div class="slide">
             <div class="banner-text">
                 <p>Flash Sales!</p>
-                <h1>Deals Reserved <br>For You</h1>
+                <h1>iPhone 16 Pro</h1>
+                 <p>GHS14250.00</p>
                 <button>Buy Now</button>
             </div>
 
             <div class="banner-img">
-                <img src="{{asset('images/image1.png')}}" alt="">
+                <img src="{{asset('images/iphone.png')}}" alt="">
             </div>     
         </div>
         
@@ -35,12 +36,13 @@
         <div class="slide">
             <div class="banner-text">
                 <p>Flash Sales!</p>
-                <h1>You Deserve <br>It All</h1>
+                <h1>iPhone XR</h1>
+                 <p>GHS2800.00</p>
                 <button>Buy Now</button>
             </div>
 
             <div class="banner-img">
-                <img src="{{asset('images/image1.png')}}" alt="">
+                <img src="{{asset('images/app.png')}}" alt="">
             </div>     
         </div>
 
@@ -48,12 +50,13 @@
         <div class="slide">
             <div class="banner-text">
                 <p>Flash Sales!</p>
-                <h1>You Deserve <br>It All</h1>
-                <button>Sell Now</button>
+                <h1>Phantom V Fold</h1>
+                 <p>GHS12800.00</p>
+                <button>Buy Now</button>
             </div>
 
             <div class="banner-img">
-                <img src="{{asset('images/image1.png')}}" alt="">
+                <img src="{{asset('images/adroid.png')}}" alt="">
             </div>     
         </div>
         
@@ -213,8 +216,8 @@
 
               
 
-             {{-- <div class="products">
-                <!-- @php $count = 0; @endphp
+             <!-- {{-- <div class="products">
+                @php $count = 0; @endphp
                 @foreach ($products as $value)
                     @php $count++; @endphp
 
@@ -230,7 +233,7 @@
 
         <p>{{ $value->description }}</p>
     @endforeach
-</div> --}} -->
+</div> --}}  -->
 
         </div>
     </section>
@@ -246,21 +249,21 @@
                        <div class="img"> <img src="{{asset('images/apple.png')}}" alt=""></div>
                         <div class="text">Up To 40% Off</div>
                     </div>
-                    <div class="brand-img"><img src="{{asset('images/image1.png')}}"></div>
+                    <div class="brand-img"><img src="{{asset('images/app.png')}}"></div>
                 </div>
-                <div class="brand" style="background: #1b4965">
+                <div class="brand" style="">
                     <div class="logo-text">
                        <div class="img"> <img src="{{asset('images/apple.png')}}" alt=""></div>
                         <div class="text">Up To 40% Off</div>
                     </div>
-                    <div class="brand-img"><img src="{{asset('images/image1.png')}}"></div>
+                    <div class="brand-img"><img src="{{asset('images/adroid.png')}}"></div>
                 </div>
                 <div class="brand">
                     <div class="logo-text">
                        <div class="img"> <img src="{{asset('images/apple.png')}}" alt=""></div>
                         <div class="text">Up To 40% Off</div>
                     </div>
-                    <div class="brand-img"><img src="{{asset('images/image1.png')}}"></div>
+                    <div class="brand-img"><img src="{{asset('images/iphone.png')}}"></div>
                 </div>
             </div>
         </div>
