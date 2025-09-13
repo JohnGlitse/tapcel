@@ -20,11 +20,16 @@
                  <p class="title">{{Str::words($product->title, 8)}}</p>
                  <hr>
                 <h3 class="price">GHS{{$product->price}}</h3>
-               <div class="availability"> <input type="checkbox" name="checkbox" checked> Availability: <span>In Stock</span></div>
-                 
+               <div class="availability"> 
+                @if($product->quantity > 0)
+                    <input type="checkbox" name="checkbox" checked> 
+                       Availability: <span>In Stock</span></div>
+                 @else
+                  Availability: <span>Out of Stock</span></div>
+                  @endif
                <form action="{{ route('add-To-Cart', $product->id) }}" method="POST">
                     @csrf
-                    <input type="number" name="quantity" value="1" min="1" />
+                    <input type="number" name="quantity" value="1" min="1" autofocus />
                     <a href="{{route('add-To-Cart', $product->id)}}"><button>Add To Cart</button></a>
                </form>
                 {{-- <input type="number" name="quantity" min="1" id="" value="1"> --}}
@@ -110,11 +115,11 @@
         </style>
 
         <script>
-            // const added = document.getElementsByClassName('added')[0];
+            const added = document.getElementsByClassName('added')[0];
  
-            // setTimeout(() => {
-            //    added.style.display = 'none';
-            // }, 2000);
+            setTimeout(() => {
+               added.style.display = 'none';
+            }, 2000);
          
         </script>
     

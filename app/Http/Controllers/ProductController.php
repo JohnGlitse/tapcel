@@ -50,9 +50,14 @@ class ProductController extends Controller
   $request->validate([
             'title' => ['required'],
             'price' => ['required'],
+            'current_price' => ['nullable'],
             'brand' => ['required'],
             'file' => ['required', 'mimes:png,jpg,jpeg,pdf'],
-            'description' => ['required'] 
+            'description' => ['required'],
+            'quantity' => ['nullable'],
+            'status' => ['nullable'],
+            'trending' => ['required'],
+            'tax' => ['nullable'],
         ]);
         
        // dd($request);
@@ -65,9 +70,14 @@ class ProductController extends Controller
         Product::create([
             'title' => $request->title,
             'price' => $request->price,
+            'current_price' => $request->current_price,
             'brand' => $request->brand,
             'file' =>  $path,
-            'description' => $request->description
+            'description' => $request->description,
+            'quantity' => $request->quantity,
+            'status' => $request->status == TRUE ? '1' : 0,
+            'trending' => $request->trending == TRUE ? '1': 0,
+            'tax' => $request->tax,
         ]);
 
         return redirect('/products/dashboard');

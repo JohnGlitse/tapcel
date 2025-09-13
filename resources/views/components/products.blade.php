@@ -14,8 +14,10 @@
                             <span class="fa fa-star {{ $i <= $product->rating ? 'checked' : '' }}"></span>
                         @endfor
                     </p>
+                   
                     <div class="commission">
-                        -{{ $product->discount ?? '0' }}%
+                         -{{ round((($product->price - $product->current_price) / $product->price) * 100) }}%
+                        <!-- -{{ $product->current_price ?? '0' }}% -->
                     </div>
                 </div>
             </div>

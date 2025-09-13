@@ -19,10 +19,10 @@ return new class extends Migration
             $table->String('brand');
             $table->String('file');
             $table->text('description');
-            $table->String('quantity');
-            $table->tinyInteger('status');
-            $table->tinyInteger('trending');
-            $table->String('tax');
+            $table->String('quantity')->nullable();
+            $table->tinyInteger('status')->nullable();
+            $table->tinyInteger('trending')->nullabe();
+            $table->String('tax')->nullable();
             $table->timestamps();
         });
     }
