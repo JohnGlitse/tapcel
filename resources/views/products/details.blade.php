@@ -17,9 +17,12 @@
             <div class="details">
             <div class="detail-img"> <img src="{{asset('storage/' . $product->file)}}"></div>
              <div class="detail-text">
-                 <p class="title">{{Str::words($product->title, 8)}}</p>
+                 <p class="title">{{Str::words($product->title, 10)}}</p>
                  <hr>
-                <h3 class="price">GHS{{$product->price}}</h3>
+               <div style="display: flex; gap: 12px">
+                 <h3 class="price">GHS{{$product->current_price}}</h3>
+                 <p style="text-decoration: line-through">GHS{{$product->price}}</p>
+               </div>
                <div class="availability"> 
                 @if($product->quantity > 0)
                     <input type="checkbox" name="checkbox" checked> 
@@ -61,7 +64,9 @@
                         <img src="{{ asset('storage/' . $product->file) }}" alt="">
                     </div>
                     <p class="title">{{Str::words( $product->title, 2)}}</p>
-                    <h3 class="price">GHS{{$product->price}}</h3>
+                 
+                        <h3 class="price">GHS{{$product->price}}</h3>
+               
                     <div class="rating-commission">
                         <p class="rating">
                             @for ($i = 1; $i <= 5; $i++)

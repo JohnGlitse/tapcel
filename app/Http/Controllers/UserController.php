@@ -27,7 +27,7 @@ class UserController extends Controller
             'firstname' => ['required', 'min:2', 'max:30'],
             'lastname' => ['required', 'min:2', 'max:30'],
             'email' => ['required', 'min:2', 'max:30', 'unique:users,email'],
-            'telephone' => ['required','integer'],
+            'telephone' => ['required'],
             'gender' => ['required'],
             'region' => ['required'],
             'address' => ['required', 'min:2', 'max:100'],

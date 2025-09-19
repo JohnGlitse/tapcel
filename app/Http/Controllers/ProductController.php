@@ -24,10 +24,15 @@ class ProductController extends Controller
 
 
         /// SELECTING BASED ON BRAND
+
+        $apples = Product::where('brand', 'apple')->get();
+       // $android = Product::where('brand', 'apple')->get();
        
         
         return view('products.index', [
             'products' => $products,
+            'apples' => $apples,
+            // 'android' => $android
         ]);
         
 
@@ -56,7 +61,7 @@ class ProductController extends Controller
             'description' => ['required'],
             'quantity' => ['nullable'],
             'status' => ['nullable'],
-            'trending' => ['required'],
+            'trending' => ['nullable'],
             'tax' => ['nullable'],
         ]);
         

@@ -1,7 +1,7 @@
 <x-layout>
 
 
-    <section>
+    <section style="padding-top: 0; padding-bottom: 6px">
      <div class="brands">
         <ul>
             
@@ -124,6 +124,39 @@
         <div class="products" id="deal">
             @php  $count = 0;  @endphp
             @foreach ($products as $product)
+            @php $count++; @endphp
+                    @if ($count > 8)
+                        @break
+                    @endif
+                <x-products :product="$product" id="deal-product" style="width: 170px;"/>
+            @endforeach
+             
+        </div>
+
+         @forelse ($products as $product)
+        
+        @empty
+            <div>
+                No Product found: <strong>{{request()->search}}</strong>
+            </div>
+        @endforelse
+         
+
+ 
+        </div>
+
+    </section>
+
+    {{-- BEST DEALS FOR APPLE PHONES --}}
+    <section>
+        <div id="deals">
+            <h1>Trending <span class="android">Apple Phones</span></h1>
+            <hr>
+          
+ 
+        <div class="products" id="deal">
+            @php  $count = 0;  @endphp
+            @foreach ($apples as $product)
             @php $count++; @endphp
                     @if ($count > 8)
                         @break

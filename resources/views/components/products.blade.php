@@ -6,7 +6,8 @@
                 <div>
                     <img src="{{ asset('storage/' . $product->file) }}" alt="">
                 </div>
-                <p class="title">{{Str::words($product->title, 2)}}</p>
+                <!-- <p class="title">{{Str::words($product->title, 2)}}</p> -->
+                 <p class="title">{{$product->title}}</p>
                 <h3 class="price">GHS{{$product->price}}</h3>
                 <div class="rating-commission">
                     <p class="rating">

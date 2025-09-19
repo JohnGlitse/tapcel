@@ -16,36 +16,100 @@ class PaystackController extends Controller
         return view('pay');
     }
 
+
+  public function redirectToGateway(Request $request)
+{
+    $request->validate([
+        'email'   => 'required|email',
+        'amount'  => 'required|numeric|min:1',
+        'channel' => 'required|in:mobile_money,card',
+    ]);
+
+    $email   = $request->input('email');
+    $amount  = intval($request->input('amount') * 100); // GHS -> pesewas
+    $channel = $request->input('channel');
+
+    try {
+        $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))
+            ->timeout(15)
+            ->post(env('PAYSTACK_PAYMENT_URL') . '/transaction/initialize', [
+                'email'        => $email,
+                'amount'       => $amount,
+                'currency'     => 'GHS',
+                'channels'     => [$channel],
+                'callback_url' => route('payment.callback'),
+            ]);
+    } catch (\Exception $e) {
+        Log::error('Paystack Initialize Exception', ['msg' => $e->getMessage()]);
+        return back()->withInput()->with('error', 'Could not contact Paystack. Try again.');
+    }
+
+    // HTTP-level check
+    if ($response->failed()) {
+        Log::error('Paystack HTTP error', [
+            'status' => $response->status(),
+            'body'   => $response->body(),
+        ]);
+        return back()->withInput()->with('error', 'Payment initialization failed (network).');
+    }
+
+    $body = $response->json();
+
+    // Log full response for debugging if initialization failed
+    if (!($body['status'] ?? false) || !isset($body['data']['authorization_url'])) {
+        Log::warning('Paystack initialize response', ['body' => $body, 'channel' => $channel]);
+        $message = $body['message'] ?? ($body['data']['message'] ?? 'Payment initialization failed.');
+        // Show meaningful message in debug mode, otherwise a generic friendly message
+        if (config('app.debug')) {
+            return back()->withInput()->with('error', "Initialization failed: {$message}");
+        }
+        return back()->withInput()->with('error', 'Payment initialization failed. Please contact support.');
+    }
+
+    // Success: redirect user to Paystack checkout
+    return redirect($body['data']['authorization_url']);
+}
+
+
+
+
     /**
      * Redirect user to Paystack payment gateway
      */
-    public function redirectToGateway(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'amount' => 'required|numeric|min:1',
-        ]);
+    // public function redirectToGateway(Request $request)
+    // {
+    //     $request->validate([
+    //         'email' => 'required|email',
+    //         'amount' => 'required|numeric|min:1',
+    //     ]);
 
-        $email = $request->input('email');
-        $amount = intval($request->input('amount') * 100); // Convert to pesewas
+    //     $email = $request->input('email');
+    //     $amount = intval($request->input('amount') * 100); // Convert to pesewas
 
-        $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))
-            ->post(env('PAYSTACK_PAYMENT_URL') . '/transaction/initialize', [
-                'email' => $email,
-                'amount' => $amount,
-                'currency' => 'GHS',
-                'channels' => ['mobile_money', 'bank'],
-                'callback_url' => route('payment.callback'),
-            ]);
+    //     $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))
+    //         ->post(env('PAYSTACK_PAYMENT_URL') . '/transaction/initialize', [
+    //             'email' => $email,
+    //             'amount' => $amount,
+    //             'currency' => 'GHS',
+    //             'channels' => ['mobile_money', 'bank'],
+    //             'callback_url' => route('payment.callback'),
+    //         ]);
 
-        $body = $response->json();
+    //     $body = $response->json();
 
-        if ($body['status'] && isset($body['data']['authorization_url'])) {
-            return redirect($body['data']['authorization_url']);
-        }
+    //     if ($body['status'] && isset($body['data']['authorization_url'])) {
+    //         return redirect($body['data']['authorization_url']);
+    //     }
 
-        return back()->with('error', 'Payment initialization failed.');
-    }
+    //     return back()->with('error', 'Payment initialization failed.');
+    // }
+
+
+
+
+
+
+
 
     /**
      * Handle Paystack redirect/callback
@@ -67,7 +131,7 @@ class PaystackController extends Controller
             // Store the transaction or mark order as paid
             // Example: Transaction::create([...])
             // return view('products.index', ['data' => $body['data']]);
-            return redirect('cart')->with('completed', 'Your order has beend placed successully!');
+            return redirect('cart')->with('completed', 'Your order has been placed successully!');
         }
 
         return view('payment-failed')->with('error', 'Payment failed or could not be verified.');

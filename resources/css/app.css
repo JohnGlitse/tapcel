@@ -48,7 +48,8 @@
     --color-2: #5fa8d3;
     --color-3: #fb8500; */
 
-    --page-padding: 80px 80px 80px 80px;
+    --page-padding: 40px 40px 0px 40px;
+    /* --page-padding: 80px 80px 80px 80px; */
 }
 
 @media screen and (max-width: 767px) {
@@ -60,7 +61,7 @@
 
 body{
     width: 100%;
-    max-width: 1400px;
+    max-width: 1280px;
     display: flex;
     flex-direction: column;
     justify-self: center;

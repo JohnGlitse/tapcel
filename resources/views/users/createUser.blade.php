@@ -87,11 +87,12 @@
         <div style="display: flex; gap: 10px; align-items: center">
             <a href="{{route('redirect.google')}}"> <img src="{{asset('images/googlesignin.png')}}" width="200px"> </a>
             <a href="{{route('redirect.google')}}"> <img src="{{asset('images/facebooksignin.png')}}" width="250px"> </a>
-        <div>
-           
-        </div>
+         
         
         
         </div>
     </div>
+<a href="{{route('login')}}">Aready have an account? Login </a>
+</div>
+</div>
 </x-layout>

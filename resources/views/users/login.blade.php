@@ -18,8 +18,15 @@
     </div>
 
     <div>
-           <a href="{{route('redirect.google')}}"> <button>Google</button></a>
-            <button>Facebook</button>
+        <div style="display: flex; gap: 10px; align-items: center">
+            <a href="{{route('redirect.google')}}"> <img src="{{asset('images/googlesignin.png')}}" width="200px"> </a>
+            <a href="{{route('redirect.google')}}"> <img src="{{asset('images/facebooksignin.png')}}" width="250px"> </a>
+        <div>
+           
         </div>
+         
  </div>
+ <a href="{{route('users.create')}}">Don't have an account? Create Account. </a>
+</div>
+</div>
 </x-layout>

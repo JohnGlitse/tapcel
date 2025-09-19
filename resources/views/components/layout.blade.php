@@ -38,7 +38,7 @@
         </nav>
 
         <form action="{{route('product.index')}}" class="search">
-              <input type="text" name="search" placeholder="Search...">
+              <input type="text" name="search" placeholder="Search for your favoriate...">
               <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <!-- {{-- <form action="{{route('product.index')}}" class="search">
@@ -94,6 +94,9 @@
             .logo img{
                 width: 60px;
             }
+            .fa-bars, .fa-user{
+                display: none;
+            }
             @media(max-width: 767px) {
                 .login-register{
                     display: none;
@@ -102,6 +105,9 @@
                 .logo img{
                 width: 60px;
                 object-fit: cover;
+                }
+                .fa-bars, .fa-user{
+                    display: block;
                 }
             }
 
