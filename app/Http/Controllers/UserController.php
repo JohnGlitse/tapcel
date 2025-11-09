@@ -31,6 +31,7 @@ class UserController extends Controller
             'gender' => ['required'],
             'region' => ['required'],
             'address' => ['required', 'min:2', 'max:100'],
+            'city' => ['required'],
             'password' => ['required', 'min:4', 'max:16'],
         ]);
 //         $users = $request->validate([
@@ -116,6 +117,7 @@ class UserController extends Controller
         'gender'    => ['required'],
         'region'    => ['required'],
         'address'   => ['required', 'string', 'min:2', 'max:100'],
+        'city' => ['required'],
         'password'  => ['nullable', 'string', 'min:4', 'max:16'],  
     ]);
 
@@ -127,8 +129,12 @@ class UserController extends Controller
     }
 
     $user->update($validated);
-
-    return redirect('/')->with('success', 'Profile updated successfully!');
+    
+    $previousUrl = url()->previous();
+    return redirect()->to($previousUrl);
+    // return redirect()->back();
+   // return redirect()->intended();
+    //->with('success', 'Profile updated successfully!');
 }
 
 

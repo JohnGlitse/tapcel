@@ -24,11 +24,12 @@ Route::get('/', function () {
 });
 Route::get('/', [ProductController::class, 'index']);
 
-Route::get('products/dashboard', function(){
-    return view('products.dashboard');
-})->name('dashboard');
+// Route::get('products/dashboard', function(){
+//     return view('products.dashboard');
+// })->name('dashboard');
 
-Route::get('products/dashboard', [ProductController::class, 'admin']);
+Route::get('dashboard', [DashboardController::class, 'admin'])->name('dashboard');
+//Route::get('products/dashboard', [ProductController::class, 'admin'])->name('dashboard');
 
 Route::get('checkout', function(){
     return view('products.checkout');
@@ -87,7 +88,8 @@ Route::get('userprofile', function(){
 
 // PASTACK PAMENT GATEWAY ROUTES
 // Show form
-Route::get('/pay', [PaystackController::class, 'showPaymentForm'])->name('payment.form');
+Route::get('/pay', [PaystackController::class, 'showPaymentMomo'])->name('payment.momo');
+Route::get('/paybank', [PaystackController::class, 'showPaymentBank'])->name('payment.bank');
 
 // Handle form submission and redirect to Paystack
 Route::post('/pay', [PaystackController::class, 'redirectToGateway'])->name('payment.redirect');

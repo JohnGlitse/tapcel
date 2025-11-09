@@ -76,9 +76,14 @@
                   @error('address')
                     <p class="error-message">{{$message}}</p>
                 @enderror
-                <input type="password" name="password" placeholder="Password">
+                <input type="text" name="city" placeholder="City" value="{{old('city')}}">
+                  @error('city')
+                    <p class="error-message">{{$message}}</p>
+                @enderror
+                
             </div>
             <div class="form-row">
+                <input type="password" name="password" placeholder="Password">
                 <input type="submit" value="Update">
             </div>
         </form>

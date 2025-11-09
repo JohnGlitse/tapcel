@@ -32,7 +32,10 @@ nav ul{
     padding: 3px 12px;
     font-size: 18px;
     outline: none;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 1px 2px 0px rgba(60, 64, 67, 0.3),
+    0px 1px 3px 1px rgba(60, 64, 67, 0.15); */
     width: 380px;
     height: 35px;
     border-radius: 30px 0 0 30px;
@@ -46,6 +49,7 @@ nav ul{
     height: 35px;
     cursor: pointer;
     border-radius: 0 30px 30px 0;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
 }
 
 .cart-login{
@@ -67,22 +71,34 @@ nav ul{
 #services{
     width: 100%;
     min-height: 100%;
-    padding-bottom: 60px;
+    /* padding-bottom: 60px; */
 }
 
 .services{
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 6px; margin-top: 6px;
+
+    background-color: #f8f9fa;
+    border-radius: 10px;
 }
 
 .service{
-    border: 1px solid grey;
+    /* box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 2px 0px rgba(60, 64, 67, 0.3),
+    0px 1px 3px 1px rgba(60, 64, 67, 0.15); */
     border-radius: 20px;
-    padding: 15px;
+    padding: 25px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 10px;
 }
 
+.service i{
+  color: var(--accent-color);
+}
 
 .fa-user, .fa-bars{
     display: none;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -11,9 +12,13 @@ class PaystackController extends Controller
     /**
      * Show a form where users enter amount and email
      */
-    public function showPaymentForm()
+    public function showPaymentMomo()
     {
         return view('pay');
+    }
+    public function showPaymentBank()
+    {
+        return view('paybank');
     }
 
 
@@ -66,52 +71,43 @@ class PaystackController extends Controller
         return back()->withInput()->with('error', 'Payment initialization failed. Please contact support.');
     }
 
+
+        //    ///// CREATE NEW ORDER IN THE ORDER TABLE WHEN PAYMENT IS SUCCESSFUL
+
+            $orders = $request->validate([
+            'firstname' => ['required'],
+            'lastname' => ['required'],
+            'email' => ['required'],
+            'telephone' => ['required'],
+            'gender' => ['nullable'],
+            'region' => ['required'],
+            'address' => ['required'],
+            'city' => ['required'],
+            'status' => ['nullable'],
+            'tracking_number' => ['nullable']
+
+        ]);
+
+    Order::create([
+    ...$orders,
+    'tracking_number' => 'tapcel'.rand(0, 1000),
+    ]);
+
+    //$order->id;  
+
+    
+   
+
     // Success: redirect user to Paystack checkout
     return redirect($body['data']['authorization_url']);
+ 
+
 }
 
 
 
 
-    /**
-     * Redirect user to Paystack payment gateway
-     */
-    // public function redirectToGateway(Request $request)
-    // {
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'amount' => 'required|numeric|min:1',
-    //     ]);
-
-    //     $email = $request->input('email');
-    //     $amount = intval($request->input('amount') * 100); // Convert to pesewas
-
-    //     $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))
-    //         ->post(env('PAYSTACK_PAYMENT_URL') . '/transaction/initialize', [
-    //             'email' => $email,
-    //             'amount' => $amount,
-    //             'currency' => 'GHS',
-    //             'channels' => ['mobile_money', 'bank'],
-    //             'callback_url' => route('payment.callback'),
-    //         ]);
-
-    //     $body = $response->json();
-
-    //     if ($body['status'] && isset($body['data']['authorization_url'])) {
-    //         return redirect($body['data']['authorization_url']);
-    //     }
-
-    //     return back()->with('error', 'Payment initialization failed.');
-    // }
-
-
-
-
-
-
-
-
-    /**
+   /**
      * Handle Paystack redirect/callback
      */
     public function handleGatewayCallback(Request $request)
@@ -162,14 +158,49 @@ class PaystackController extends Controller
         }
 
         return response()->json(['status' => 'success']);
+
+
     }
 
-
-
-
-    
+  
 }
 
+
+
+
+
+
+
+    /**
+     * Redirect user to Paystack payment gateway
+     */
+    // public function redirectToGateway(Request $request)
+    // {
+    //     $request->validate([
+    //         'email' => 'required|email',
+    //         'amount' => 'required|numeric|min:1',
+    //     ]);
+
+    //     $email = $request->input('email');
+    //     $amount = intval($request->input('amount') * 100); // Convert to pesewas
+
+    //     $response = Http::withToken(env('PAYSTACK_SECRET_KEY'))
+    //         ->post(env('PAYSTACK_PAYMENT_URL') . '/transaction/initialize', [
+    //             'email' => $email,
+    //             'amount' => $amount,
+    //             'currency' => 'GHS',
+    //             'channels' => ['mobile_money', 'bank'],
+    //             'callback_url' => route('payment.callback'),
+    //         ]);
+
+    //     $body = $response->json();
+
+    //     if ($body['status'] && isset($body['data']['authorization_url'])) {
+    //         return redirect($body['data']['authorization_url']);
+    //     }
+
+    //     return back()->with('error', 'Payment initialization failed.');
+    // }
 
 
 

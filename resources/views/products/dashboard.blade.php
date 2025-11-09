@@ -53,7 +53,7 @@
                     </div>
                     <div class="box">
                         <h2>Total Orders</h2>
-                         <p>{{$users->total()}}</p>
+                         <p>{{$orders->total()}}</p>
                     </div>
                     <div class="box">
                         <h2>Total Sales</h2>

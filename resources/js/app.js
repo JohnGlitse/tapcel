@@ -2,8 +2,8 @@ import './bootstrap';
 
 const banner = document.getElementsByClassName('banner')[0];
 let slide = document.getElementsByClassName('slide');
-const arrowLeft = document.querySelector('.fa-arrow-left');
-const arrowRight = document.querySelector('.fa-arrow-right');
+const arrowLeft = document.querySelector('.fa-chevron-left');
+const arrowRight = document.querySelector('.fa-chevron-right');
 const arrows = document.querySelector('.arrows');
 let index = 1;
 let interval = 3000;

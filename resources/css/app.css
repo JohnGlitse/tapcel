@@ -28,6 +28,7 @@
     --primary-color: #fff;
     --secondary-color: #f8f9fa;
     --accent-color: #03071e;
+    --accent-color: #c9184a;
     --color-1: #023047;
     --color-2: #415a77;
     --color-3: #0d1b2a;
@@ -48,13 +49,13 @@
     --color-2: #5fa8d3;
     --color-3: #fb8500; */
 
-    --page-padding: 40px 40px 0px 40px;
+    --page-padding: 20px 40px 20px 40px;
     /* --page-padding: 80px 80px 80px 80px; */
 }
 
 @media screen and (max-width: 767px) {
     :root{
-        --page-padding: 50px 15px 50px 15px;
+        --page-padding: 20px 15px 20px 15px;
     }
 }
  
@@ -66,6 +67,7 @@ body{
     flex-direction: column;
     justify-self: center;
     font-family: "Bricolage Grotesque";
+    font-family: "outfit";
 }
 
 html, body{

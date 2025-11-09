@@ -99,6 +99,9 @@
     display: flex;
     gap: 60px;
 }
+table{
+    height: fit-content;
+}
 
 table, th, td{
     border: 1px solid gray;

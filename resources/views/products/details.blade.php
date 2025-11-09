@@ -51,6 +51,29 @@
              </div>
 
              
+             </div>
+
+
+            <div class="meta-info">
+                <div class="headings">
+                    <p data-links="#description" class="active">Description</p>
+                    <p data-links="#ratings">Ratings</p>
+                    <p data-links="#reviews">Reviews</p>
+                </div>
+                <div class="contents">
+                    <div id="description" data-content class="active">
+                        <div class="description" >
+                            <h2>Product Description</h2>
+                            {{-- <p class="title">{{$brand->title}}</p> --}}
+                            <p>
+                                {{$product->description}}
+                                
+                            </p>
+                       </div>
+                    </div>
+                    <div id="ratings" data-content>THE LIST OF CUSTOMER RATINGS OF PRODUCT</div>
+                    <div id="reviews" data-content>THE LIST OF CUSTOMER REVIEWS OF THE PRODUCT</div>
+                </div>
             </div>
 
  <div id="relatedProducts"> 
@@ -98,6 +121,7 @@
                 display: flex;
                 flex-wrap: nowrap;
                 overflow-x: scroll;
+                padding: 20px 0;
             }
              
             #product{
@@ -117,6 +141,40 @@
                 padding: 40px 15px;
             }
             }
+
+            [data-content]{
+                display: none;
+            }
+            .active[data-content]{
+                display: block;
+                padding: 40px;
+                background-color: #f1f1f1;
+                margin-top: 6px;
+            }
+            .meta-info{
+                width: 100%;
+                padding: 40px;
+            }
+            .meta-info .headings{
+                display: flex;
+                justify-content:  space-around;
+                gap: 4px;
+            }
+
+            [data-links]{
+                background-color: #f2f2f2;
+                width: 100%;
+                padding: 30px;
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .active[data-links]{
+                background-color: var(--accent-color);
+                color: var(--primary-color);
+            }
         </style>
 
         <script>
@@ -125,7 +183,55 @@
             setTimeout(() => {
                added.style.display = 'none';
             }, 2000);
-         
+
+
+            const links = document.querySelectorAll('[data-links]');
+            const contents = document.querySelectorAll('[data-content]');
+             console.log(links)
+            links.forEach(link=>{
+                link.addEventListener('click', () =>{
+                    const target = document.querySelector(link.dataset.links);
+
+                    contents.forEach(content =>{
+                        content.classList.remove('active')
+                        links.forEach(link=>{
+                            link.classList.remove('active');
+                        })
+                    })
+                    link.classList.add('active')
+                    target.classList.add('active');
+                });
+            });
+                 
+
+
+
+
+
+
+
+
+
+
+
+
+    //         const tabLinks = document.querySelectorAll('[data-tablink]')
+	// const contents = document.querySelectorAll('[data-content]')
+	// tabLinks.forEach(link=>{
+	// 	link.addEventListener('click', ()=>{
+	// 		const target = document.querySelector(link.dataset.tablink)
+	// 		contents.forEach(content=>{
+	// 			content.classList.remove('active')
+	// 		})
+	// 			tabLinks.forEach(link=>{
+	// 				link.classList.remove('active')
+	// 			})			
+
+	// 		link.classList.add('active')
+	// 		target.classList.add('active')
+	// 	})
+	// })
+
         </script>
     
 </x-layout>

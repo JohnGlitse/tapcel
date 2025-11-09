@@ -5,15 +5,31 @@
             
             
             <div class="container">
-                <p><strong>First Name: </strong>   {{auth()->user()->firstname}}</p>
+                {{-- <p><strong>First Name: </strong>   {{auth()->user()->firstname}}</p>
                 <p><strong>Last Name: </strong>   {{auth()->user()->lastname}}</p>
                 <p><strong>Email: </strong>{{auth()->user()->email}}</p>
                 <p><strong>Telephone: </strong>{{auth()->user()->telephone}}</p>
                 <p><strong>Gender: </strong>{{auth()->user()->gender}}</p>
                 <p><strong>Address: </strong>{{auth()->user()->address}}</p>
-                <p><strong>Region: </strong>{{auth()->user()->region}}</p>
+                <p><strong>Region: </strong>{{auth()->user()->region}}</p> --}}
     
-                <a href="{{route('profile')}}"><button>Edit</button></a>
+                {{-- <a href="{{route('profile')}}"><button>Edit</button></a> --}}
+                <form action="{{route('users.update', auth()->user()->id)}}" method="POST">
+                    @csrf
+                    @method("PUT")
+                   
+                    <input type="text" name="firstname" value="{{auth()->user()->firstname}}" placeholder="First Name">
+                    <input type="text" name="lastname" value="{{auth()->user()->lastname}}" placeholder="Last Name">
+                    <input type="email" name="email" value="{{auth()->user()->email}}" placeholder="Email">
+                    <input type="text" name="telephone" value="{{auth()->user()->telephone}}" placeholder="Telephone">
+                    <input type="text" name="gender" value="{{auth()->user()->gender}}" placeholder="Gender">
+                    <input type="text" name="city" value="{{auth()->user()->city}}" placeholder="City">
+                    <input type="text" name="region" value="{{auth()->user()->region}}" placeholder="Region">
+                    <input type="text" name="address" value="{{auth()->user()->address}}" placeholder="Address">
+                    {{-- <a href="{{route('users.update')}}"> --}}
+                        <button id="update">Update</button>
+                    {{-- </a> --}}
+                </form>
              </div>
             <div class="container">
                  @php $total = 0; @endphp
@@ -113,8 +129,24 @@
             color: #fff;
             padding: 6px 12px;
             cursor: pointer;
+            width: fit-content;
         }
-    
+
+        #update{
+            width: 100%;
+        }
+       
+
+       #checkout form{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+       #checkout  form input{
+            border: 1px solid var(--accent-color);
+            padding: 6px 12px;
+        }
+         
     
 
         /* LIST OF ALL THE ITEMS SELECTED FROM THE CART */

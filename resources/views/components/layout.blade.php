@@ -140,7 +140,7 @@
             <div class="services">
                 <div class="service">
                     <i class="fa-solid fa-bus"></i>
-                    <p>Free, Fast Shapping above GHS600</p>
+                    <p>Free, Fast Shipping above GHS600</p>
                 </div>
                 <div class="service">
                     <i class="fa-solid fa-dollar"></i>
@@ -221,7 +221,7 @@
                     const date = new Date();
                     document.write(date.getFullYear())
                 </script>.
-                <a href="products/dashboard">All rights reserved!</a>
+                <a href="{{route('dashboard')}}">All rights reserved!</a>
             </div>
         </div>
     </footer>

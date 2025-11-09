@@ -118,6 +118,8 @@
             gap: 40px;
             border-radius: 10px;
             box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 1px 2px 0px rgba(60, 64, 67, 0.3),
+    0px 1px 3px 1px rgba(60, 64, 67, 0.15);
 
         }
         .cart-text{}

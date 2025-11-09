@@ -6,8 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 
-use Auth;
+//use Auth;
 
 class GoogleController extends Controller
 {
@@ -23,7 +24,7 @@ class GoogleController extends Controller
 
         if ($finduser) {
             Auth::login($finduser);
-            return redirect('/'); 
+            return redirect()->intended(); 
         } else {
             // Split full name into first and last
             $fullName = explode(' ', $user->getName(), 2);
@@ -41,7 +42,7 @@ class GoogleController extends Controller
             Auth::login($finduser);
         }
 
-       return redirect()->route('profile');
+       return redirect()->intended();
     
     }
 

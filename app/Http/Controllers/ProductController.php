@@ -27,12 +27,14 @@ class ProductController extends Controller
 
         $apples = Product::where('brand', 'apple')->get();
        // $android = Product::where('brand', 'apple')->get();
+       $featured = Product::limit(3)->get();
        
         
         return view('products.index', [
             'products' => $products,
             'apples' => $apples,
             // 'android' => $android
+            'features' => $featured
         ]);
         
 
@@ -158,61 +160,61 @@ class ProductController extends Controller
         dd('Product deleted!');
     }
 
-    public function admin(){
-        $users = User::paginate(6);
-        $products = Product::paginate(6);
+    // public function admin(){
+    //     $users = User::paginate(6);
+    //     $products = Product::paginate(6);
 
 
 
-         $secondChart = Product::select(
-            DB::raw("COUNT(*) as count"),
-            'brand'
-        )
-        ->whereYear("created_at", date("Y"))
-        ->groupBy('brand')
-        ->orderBy('count', 'desc') // optional: order by most popular brand
-        ->get();
+    //      $secondChart = Product::select(
+    //         DB::raw("COUNT(*) as count"),
+    //         'brand'
+    //     )
+    //     ->whereYear("created_at", date("Y"))
+    //     ->groupBy('brand')
+    //     ->orderBy('count', 'desc') // optional: order by most popular brand
+    //     ->get();
 
-    $datakeys = [];    // Brand names for x-axis
-    $datavalues = [];  // Product counts for y-axis
+    // $datakeys = [];    // Brand names for x-axis
+    // $datavalues = [];  // Product counts for y-axis
 
-    foreach ($secondChart as $second) {
-        $datakeys[] = $second->brand;
-        $datavalues[] = (int) $second->count;
-    }
-
-
-    ///// THIS IS THE SECOND CHART
-
-    //     $chartProduct = Product::select(
-    //     DB::raw("COUNT(*) as count"),
-    //     DB::raw("NAME(region) as region_name"),
-    //     // DB::raw("DAYOFWEEK(created_at) as day_number")
-    // )
-    // //->whereYear("created_at", date("Y"))
-    // //->groupBy(DB::raw("DAYOFWEEK(created_at)"))
-    // ->orderBy("region_name")
-    // ->get();
-
-    // $labels = []; // x-axis categories (day names)
-    // $values = []; // y-axis data (counts)
-
-    // foreach ($chartProduct as $item) {
-    //     $labels[] = $item->day_name;
-    //     $values[] = (int) $item->count;
+    // foreach ($secondChart as $second) {
+    //     $datakeys[] = $second->brand;
+    //     $datavalues[] = (int) $second->count;
     // }
 
+
+    // ///// THIS IS THE SECOND CHART
+
+    // //     $chartProduct = Product::select(
+    // //     DB::raw("COUNT(*) as count"),
+    // //     DB::raw("NAME(region) as region_name"),
+    // //     // DB::raw("DAYOFWEEK(created_at) as day_number")
+    // // )
+    // // //->whereYear("created_at", date("Y"))
+    // // //->groupBy(DB::raw("DAYOFWEEK(created_at)"))
+    // // ->orderBy("region_name")
+    // // ->get();
+
+    // // $labels = []; // x-axis categories (day names)
+    // // $values = []; // y-axis data (counts)
+
+    // // foreach ($chartProduct as $item) {
+    // //     $labels[] = $item->day_name;
+    // //     $values[] = (int) $item->count;
+    // // }
+
       
-        return view('products.dashboard',
-         [
-            'users' => $users, 
-            'products' => $products,
-            'datakeys' => $datakeys,
-            'datavalues' =>$datavalues,
-            // 'labels' => $labels,
-            // 'values' => $values
-        ]);
-    }
+    //     return view('products.dashboard',
+    //      [
+    //         'users' => $users, 
+    //         'products' => $products,
+    //         'datakeys' => $datakeys,
+    //         'datavalues' =>$datavalues,
+    //         // 'labels' => $labels,
+    //         // 'values' => $values
+    //     ]);
+    // }
 
    
 
@@ -260,7 +262,8 @@ public function charts()
     }
 
     // return view('/home', compact('labels', 'values'));
-    return view('/home', ['labels' => $labels, 'values' => $values, 
+    return view('/home', [
+        'labels' => $labels, 'values' => $values, 
     'datakeys' => $datakeys, 'datavalues' => $datavalues
      ]);
 }
