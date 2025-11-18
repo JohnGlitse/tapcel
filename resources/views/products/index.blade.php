@@ -14,8 +14,8 @@
       
         </ul>
      </div> --}}
- <div style="display: flex; gap: 6px;">
-    <div style="width: 20%; height: 350px; background: #f8f9fa; border-radius: 10px;">
+ <div style="" class="banner-wrapper">
+    <div style="" class="banner-side1">
          <div class="brands">
         <ul style="flex-direction: column">
             
@@ -33,7 +33,7 @@
      <div class="banner">
 
         {{-- FIRST SLIDE AND CONTENT --}}
-        <div class="slide">
+        <div class="slide" id="slide1">
             <div class="banner-text">
                 <p>Limited stocks!</p>
                 <h1>Get up to 30% Off New Arrivals</h1>
@@ -43,12 +43,12 @@
             </div>
 
             <div class="banner-img">
-                <img src="{{asset('images/itel.png')}}" alt="">
+                <img src="{{asset('images/image3.png')}}" alt="">
             </div>     
         </div>
         
         {{-- SECOND SLIDE AND CONTENT --}}
-        <div class="slide">
+        <div class="slide" id="slide2">
             <div class="banner-text">
                 <p>Don't Miss Out!</p>
                 <h1>Get up to 30% Off New Arrivals</h1>
@@ -62,8 +62,8 @@
             </div>     
         </div>
 
-        {{-- SECOND SLIDE AND CONTENT --}}
-        <div class="slide">
+        {{-- THIRD SLIDE AND CONTENT --}}
+        <div class="slide" id="slide3">
             <div class="banner-text">
                 <p>Shop Flash Sales!</p>
                 <h1>Up to 40% Off on Top Smartphones</h1>
@@ -77,6 +77,21 @@
             </div>     
         </div>
         
+        {{-- FOUR SLIDE AND CONTENT --}}
+        <div class="slide" id="slide4">
+            <div class="banner-text">
+                <p>Shop Flash Sales!</p>
+                <h1>Up to 40% Off on Top Smartphones</h1>
+                {{-- <h1>Phantom V Fold</h1> --}}
+                 <p>GHS12800.00</p>
+                <button>Buy Now</button>
+            </div>
+
+            <div class="banner-img">
+                <img src="{{asset('images/app.png')}}" alt="">
+            </div>     
+        </div>
+        
      </div>
 
      <div class="arrows">
@@ -85,32 +100,39 @@
        </div>
 
     </div>
-    <div style="width: 20%; height: 350px; display: flex; flex-direction: column;
-     background: #fff; border-radius: 10px;">
+    <div style="" class="banner-side2">
 
     <div class="systems">
         <div class="system">
-            <div class="img"><img src="{{asset('images/image1.png')}}" alt=""></div>
+            <div class="img"><img src="{{asset('images/app.png')}}" alt=""></div>
             <div class="system-text">
                 <p></p>
-               <h4>Flash Sale</h4>
-                <button>Buy Now</button>
+               <h4>GET A FREE DELIVERY</h4>
+               <span style="display: flex; align-items: center; gap: 3px; text-align-center" >
+                <p>Shop Now</p><i class="fa fa-long-arrow-right" style="color: #fff"></i>
+               </span>
+
             </div>
         </div>
         <div class="system">
-            <div class="img"><img src="{{asset('images/image1.png')}}" alt=""></div>
+            <div class="img"><img src="{{asset('images/app.png')}}" alt=""></div>
             <div class="system-text">
                 <p></p>
-               <h4> Get 40% OFF</h4>
-                <button>Buy Now</button>
+               <h4> Get Up To 40% Off</h4>
+                <span style="display: flex; align-items: center; gap: 3px; text-align-center" >
+                <p>Shop Now</p><i class="fa fa-long-arrow-right" style="color: #fff"></i>
+               </span>
             </div>
         </div>
         <div class="system">
-            <div class="img"><img src="{{asset('images/image1.png')}}" alt=""></div>
+            <div class="img"><img src="{{asset('images/samsung.png')}}" alt=""></div>
             <div class="system-text">
                 <p></p>
-               <h4>60% OFF</h4>
-                <button>Buy Now</button>
+                <div style="background: #fff; padding: 6px 8px; width: fit-content; font-weight: bold; font-size: 14px">10% OFF</div>
+               {{-- <h4>EXTRA 50% OFF</h4> --}}
+                <span style="display: flex; align-items: center; gap: 3px; text-align-center" >
+                <p>Shop Now</p><i class="fa fa-long-arrow-right" style="color: #fff"></i>
+               </span>
             </div>
         </div>
         
@@ -123,7 +145,7 @@
 
 </div>
 
- <div id="services" style="">
+ <div id="services" class="home-services" style="">
             <div class="services">
                 <div class="service">
                     <i class="fa-solid fa-bus"></i>
@@ -188,13 +210,24 @@
      #deal-product{
         width: 170px !important;
      }
+
+    @media(max-width: 768px){
+        .home-services{
+            display: none;
+        }
+    }
  
     </style>
 
-  
-
+   
+      
     {{-- BEST DEALS FOR ANDROID --}}
     <section>
+
+        
+
+
+
         <div id="deals">
             <h1>BEST DEAL ON <span class="android">ANDROID</span></h1>
             <hr>
@@ -257,6 +290,24 @@
  
         </div>
 
+
+
+        
+          <div id="cta-banner">
+        <div class="cta-banner">
+            <div class="cta-text">
+                <h1>Deals On Samsung</h1>
+                <p>Grab Your Favoriate Now</p>
+                <div> UP TO <span>20% OFF</span></div>
+            </div>
+
+            <div class="cta-img">
+                <img src="{{ asset('images/app.png') }}" alt="">
+            </div>
+        </div>
+     </div>
+
+
     </section>
 
     {{-- PRODUCTS CATEGORIES --}}
@@ -288,8 +339,14 @@
     </section>
 
          <section>
+
+            <div class="hot-best-feature">
+                <p class="active" data-tab="#hot-trends">HOT TRENDS</p>
+                <P data-tab="#feature">BEST SELLERS</P>
+                <P data-tab="#best-sellers">FEATURES</P>
+            </div>
             <div id="hot-best-feature">
-            <div id="hot-trends">
+            <div id="hot-trends" data-target class="active">
                 <h2>HOT TRENDS</h2>
                 @foreach ($features as $feature)
                 
@@ -308,7 +365,9 @@
                
                 @endforeach
             </div>
-            <div id="best-sellers">
+
+             
+            <div id="best-sellers" data-target>
                 <h2>BEST SELLERS</h2>
                   @foreach ($features as $feature)
                     <div class="feature">
@@ -325,7 +384,7 @@
                    </div>
                 @endforeach
             </div>
-            <div id="feature">
+            <div id="feature" data-target>
                 <h2>FEATURES</h2>
                   @foreach ($features as $feature)
                   <div class="feature">
@@ -344,7 +403,10 @@
             </div>
         </div>
 
+       
+
         <style>
+
             #hot-best-feature{
                 width: 100%;
                 height: 100%;
@@ -353,11 +415,16 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
             }
-            #hot-trends, #best-sellers, #feature{
+            /* #hot-trends, #best-sellers, #feature{
                 display: flex;
                 flex-direction: column;
                 gap: 12px;
-            }
+            } */
+             [data-target]{
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+             }
 
             #hot-best-feature h2{
                 margin-bottom: 30px;
@@ -383,7 +450,193 @@
                 font-weight: normal;
             }
 
+
+
+
+             .hot-best-feature{
+                display: none;
+            }
+             
+            .hot-best-feature p.active{
+                background: var(--accent-color);
+                color: #fff;
+            }
+
+            @media(max-width: 768px){
+            #hot-best-feature{
+                display: flex;
+            }   
+            #hot-trends, #best-sellers, #feature{
+                 width: 100%;
+                 /* min-width: 100%; */
+            }
+            .hot-best-feature{
+                display: flex;
+                width: 100%;
+                gap: 4px;
+                justify-content: space-between;
+            }
+            .hot-best-feature p{
+                background: #f2f2f2;
+                padding: 8px;
+                font-size: 14px;
+                font-weight: bold;
+                border-radius: 4px;
+                width: 100%;
+            }
+
+            [data-target]{
+                display: none;
+            }
+
+            .active[data-target]{
+                display: flex;
+            }
+
+            }
+
+
+
+    #cta-banner{
+        width: 100%;
+        padding: 6px;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+    .cta-banner{
+        width: 100%;
+        display: flex;
+        padding: 30px;
+        justify-content: space-around;
+        background: var(--accent-color);
+        border-radius: 10px;
+        align-items: center;
+    }
+
+    .cta-text{
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+        color: #fff;
+        justify-content: center;
+    }
+
+    .cta-text h1{
+        font-size: 80px;
+        font-weight: 900;
+        line-height: 1;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+        white-space: normal;
+    }
+
+    .cta-text p{
+        font-size: 40px;
+        font-weight: 500;
+    }
+
+    .cta-text > div{
+        font-size: 30px;
+        font-weight: bold;
+        background: #fff;
+        padding: 8px 16px;
+        width: fit-content;
+        border-radius: 40px;
+        text-align: center;
+        font-weight: 200;
+        color: #333;
+    }
+
+    .cta-text span{
+        font-weight: 900;
+        font-size: 40px;
+        color: #333;
+    }
+
+    .cta-img{
+        width: 100%;
+        height: 150px;
+        flex: 1;
+    }
+
+    .cta-img img{
+        width: 100%;
+        height: 100%;
+    }
+
+    @media(max-width: 768px){
+     
+
+        #cta-banner{
+            height: fit-content;
+        }
+        .cta-banner{
+          /* flex-direction: column; */
+          padding: 10px;
+        }
+
+        .cta-text h1{
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+    .cta-img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .cta-img img{
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+    .cta-text p{
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .cta-text > div{
+        font-size: 18px;
+    }
+
+    .cta-text span{
+        font-weight: 600;
+        font-size: 20px;
+        color: #333;
+    }
+
+
+
+
+    }
+
         </style>
+
+
+ <script>
+            const tabs = document.querySelectorAll('[data-tab]');
+            const contents = document.querySelectorAll('[data-target]');
+         
+            tabs.forEach(taped=>{
+              
+                taped.addEventListener('click', () =>{
+                     
+                    const target = document.querySelector(taped.dataset.tab);
+                    contents.forEach(content =>{
+                        content.classList.remove('active');
+                        tabs.forEach(taped=>{
+                            taped.classList.remove('active')
+                        })
+                    })
+                    taped.classList.add('active')
+                    target.classList.add('active');
+                })
+            })
+        </script>
 
     </section>
 
@@ -459,7 +712,7 @@
             <div class="top-brands">
                 <div class="brand">
                     <div class="logo-text">
-                       {{-- <div class="img"> <img src="{{asset('images/apple.png')}}" alt=""></div> --}}
+                        <div style="background: #fff; padding: 6px 8px; width: fit-content; font-weight: bold;">10% OFF</div>
                         <div class="text">Best Deals on Flagship Phones</div>
                        
                         <span style="display: flex; align-items: center; gap: 3px; text-align-center" > <p>Shop Now</p><i class="fa fa-long-arrow-right" style="color: #fff"></i></span>
@@ -468,20 +721,20 @@
                 </div>
                 <div class="brand" style="">
                     <div class="logo-text">
-                       {{-- <div class="img"> <img src="{{asset('images/apple.png')}}" alt=""></div> --}}
+                       <div style="background: #fff; padding: 6px 8px; width: fit-content; font-weight: bold;">10% OFF</div>
                         <div class="text">Unlock Your Savings Now</div>
                          <p>Shop Now <i class="fa fa-long-arrow-right"></i></p>
                     </div>
-                    <div class="brand-img"><img src="{{asset('images/samsung.png')}}"></div>
+                    <div class="brand-img"><img src="{{asset('images/image3.png')}}"></div>
                 </div>
-                <div class="brand">
+                {{-- <div class="brand">
                     <div class="logo-text">
-                       {{-- <div class="img"> <img src="{{asset('images/apple.png')}}" alt=""></div> --}}
+             
                         <div class="text">Up to 40% Off on Top Smartphones</div>
                          <p>Shop Now <i class="fa fa-long-arrow-right"></i></p>
                     </div>
                     <div class="brand-img"><img src="{{asset('images/itel.png')}}"></div>
-                </div>
+                </div> --}}
             </div>
         </div>
 

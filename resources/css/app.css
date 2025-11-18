@@ -28,7 +28,7 @@
     --primary-color: #fff;
     --secondary-color: #f8f9fa;
     --accent-color: #03071e;
-    --accent-color: #c9184a;
+    --accent-color: #00d9ec;
     --color-1: #023047;
     --color-2: #415a77;
     --color-3: #0d1b2a;
@@ -71,7 +71,7 @@ body{
 }
 
 html, body{
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 .error-message{

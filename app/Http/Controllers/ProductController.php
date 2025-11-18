@@ -87,7 +87,7 @@ class ProductController extends Controller
             'tax' => $request->tax,
         ]);
 
-        return redirect('/products/dashboard');
+        return redirect('dashboard');
 
         }
 

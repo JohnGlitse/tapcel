@@ -175,6 +175,22 @@
                 background-color: var(--accent-color);
                 color: var(--primary-color);
             }
+            @media(max-width: 767px){
+                [data-links]{
+                    padding: 6px;
+                    font-size: 16px;
+                }
+
+            .meta-info{
+                width: 100%;
+                padding: 15px;
+            }
+            .meta-info .headings{
+                display: flex;
+                justify-content:  space-between;
+                gap: 4px;
+            }
+            }
         </style>
 
         <script>
@@ -187,13 +203,14 @@
 
             const links = document.querySelectorAll('[data-links]');
             const contents = document.querySelectorAll('[data-content]');
-             console.log(links)
+  
             links.forEach(link=>{
                 link.addEventListener('click', () =>{
                     const target = document.querySelector(link.dataset.links);
 
                     contents.forEach(content =>{
                         content.classList.remove('active')
+
                         links.forEach(link=>{
                             link.classList.remove('active');
                         })

@@ -24,7 +24,7 @@
 </head>
 <body>
     <div class="navbar">
-        <!-- <a href="{{route('product.index')}}" class="logo" > -->
+        {{-- <!-- <a href="{{route('product.index')}}" class="logo" > --> --}}
             <img src="{{asset('images/samplelogo.png')}}" width="40px">
         <!-- </a> -->
         <nav>
@@ -46,7 +46,7 @@
                 <button type="submit">Search</button>
             </form> --}} -->
         <div class="cart-login">
-            <div class="cart">
+            {{-- <div class="cart">
                 <a href="{{route('cart')}}" style="">
                     <i class="fa-regular fa-cart-shopping"></i>
                    
@@ -57,10 +57,10 @@
                     @endif
                        
                 </a>
-           </div>
-                <a href="{{route('login')}}" style="">
+           </div> --}}
+                {{-- <a href="{{route('login')}}" style="">
                     <i class="fa fa-user"></i>
-                </a>
+                </a> --}}
                 <i class="fa fa-bars"></i>
         </div>
         <style>
@@ -136,11 +136,11 @@
 
     <section>
         
-        <div id="services">
+        <div id="services" >
             <div class="services">
                 <div class="service">
                     <i class="fa-solid fa-bus"></i>
-                    <p>Free, Fast Shipping above GHS600</p>
+                    <p>Free, Fast Shipping</p>
                 </div>
                 <div class="service">
                     <i class="fa-solid fa-dollar"></i>
@@ -225,6 +225,36 @@
             </div>
         </div>
     </footer>
+
+    <div id="bottom-nav">
+         <div class="cart-login-footer">
+            <i class="fa fa-home"></i>
+            <i class="fa fa-th-large"></i>
+            <div class="cart">
+                
+                <a href="{{route('cart')}}" style="">
+                    <i class="fa-regular fa-cart-shopping"></i>
+                   
+                    @if (empty(session('cart')))
+                        <p></p>
+                    @else
+                     <p class="cart-count"> {{count(session('cart', []))}}</p>
+                    @endif
+                       
+                </a>
+           </div>
+                <a href="{{route('login')}}" style="">
+                    <i class="fa fa-user"></i>
+                </a>
+                <i class="fa fa-search"></i>
+
+                
+        </div>
+    </div>
+
+    <style>
+        
+    </style>
     
     <!-- <script src="{{ asset('resources/js/app.js') }}" defer></script> -->
 
